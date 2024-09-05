@@ -1,0 +1,10 @@
+.app-bar {
+  @apply flex flex-col h-full bg-white rounded-r-lg transition-all duration-500 z-40;
+}
+
+
+.app-bar:hover {
+    .logo-text{
+        @apply inline-block;
+    }
+}
