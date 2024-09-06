@@ -6,7 +6,7 @@ const useScreenSize = () => {
 
   const checkScreenSize = () => {
     const width = window.innerWidth;
-    if (width <= 768) {
+    if (width < 768) {
       setIsMobile(true);
       setIsDesktop(false);
     } else {

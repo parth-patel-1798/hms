@@ -1,10 +1,15 @@
 .app-bar {
-  @apply flex flex-col h-full bg-white rounded-r-lg transition-all duration-500 z-40;
+  @apply flex flex-col gap-2 h-full bg-white rounded-r-lg transition-all duration-500 z-40;
 }
 
+.app-bar-title {
+  @apply flex gap-2 items-center w-full rounded-md;
+}
+
+.app-bar-menu {
+  @apply flex-1 h-full rounded-md;
+}
 
 .app-bar:hover {
-    .logo-text{
-        @apply inline-block;
-    }
+  .app-bar-menu li {}
 }

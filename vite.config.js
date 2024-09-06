@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 
 export default defineConfig({
-  base: "/hms/",
+  // base: "/hms/",
   resolve: {
     alias: {
       "@assets": path.resolve(__dirname, "src/assets"),

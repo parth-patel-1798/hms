@@ -1,7 +1,7 @@
 {
-  "homepage": "https://parth-patel-1798.github.io/hms/",
   "name": "vite-project",
-  "private": true,
+  "homepage": "https://parth-patel-1798.github.io/hms",
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -16,6 +16,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "gh-pages": "^6.1.1",
+    "lucide-react": "^0.439.0",
     "react": "^18.3.1",
     "react-collapse": "^5.1.1",
     "react-dom": "^18.3.1",
