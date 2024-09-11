@@ -3,12 +3,13 @@ import useMenu from "@hooks/useMenu";
 import ProfilePicture from "@assets/images/ProfilePicture.webp";
 import { FiMenu } from "react-icons/fi";
 import { IoNotificationsOutline, IoSettingsOutline } from "react-icons/io5";
+import { Bell, Settings } from "lucide-react";
 
 const Header = () => {
   const { isOpen, setIsOpen } = useMenu();
 
   return (
-    <header className="p-1 rounded-md flex items-center justify-between">
+    <header className="p-1 flex items-center justify-between">
       <div
         className="cursor-pointer content-center p-2"
         onClick={() => {
@@ -20,13 +21,15 @@ const Header = () => {
       </div>
 
       <section className="flex gap-3 items-center py-1 px-2">
-        <IoSettingsOutline
+        <Settings
+          strokeWidth={1.5}
           size="20"
           className="text-slate-900 cursor-pointer"
         />
         {/* Notificatoin Secton */}
-        <IoNotificationsOutline
-          size="20"
+        <Bell
+          size={"20"}
+          strokeWidth={1.5}
           className="text-slate-900 cursor-pointer"
         />
         {/* profile Secton */}
