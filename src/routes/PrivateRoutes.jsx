@@ -11,7 +11,7 @@ const PrivateRoutes = {
       loader: () => {
         return true;
       },
-      errorElement: <div>Error</div>,
+      // errorElement: <div>Error</div>,
     },
     {
       path: "/employees",
