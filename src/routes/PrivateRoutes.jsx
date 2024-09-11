@@ -21,6 +21,30 @@ const PrivateRoutes = {
       },
       errorElement: <div>Error</div>,
     },
+    {
+      path: "/organization/location",
+      element: <div>location</div>,
+      loader: () => {
+        return true;
+      },
+      errorElement: <div>Error</div>,
+    },
+    {
+      path: "/organization/clients",
+      element: <div>clients</div>,
+      loader: () => {
+        return true;
+      },
+      errorElement: <div>Error</div>,
+    },
+    {
+      path: "/organization/departments/location1",
+      element: <div>department</div>,
+      loader: () => {
+        return true;
+      },
+      errorElement: <div>Error</div>,
+    },
   ],
 };
 export default PrivateRoutes;

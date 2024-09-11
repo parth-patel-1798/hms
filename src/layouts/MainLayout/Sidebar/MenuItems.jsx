@@ -4,11 +4,12 @@ const MenuItems = [
   {
     title: "Dashboard",
     link: "/dashboard",
-    icon: <LayoutDashboard strokeWidth={1.25} />,
+    icon: <LayoutDashboard strokeWidth={1.5} />,
+    // icon: <LuLayoutDashboard strokeWidth={1.25} />,
   },
   {
     title: "Organization",
-    icon: <Building2 strokeWidth={1.25} />,
+    icon: <Building2 strokeWidth={1.5} />,
     child: [
       {
         title: "Locations",
@@ -18,12 +19,21 @@ const MenuItems = [
         title: "Clients",
         link: "/organization/clients",
       },
+      {
+        title: "Departments",
+        child: [
+          {
+            title: "Locations1",
+            link: "/organization/departments/location1",
+          },
+        ],
+      },
     ],
   },
   {
     title: "Employees",
     link: "/employees",
-    icon: <Users strokeWidth={1.25} />,
+    icon: <Users strokeWidth={1.5} />,
   },
 ];
 

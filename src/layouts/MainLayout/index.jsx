@@ -11,7 +11,7 @@ const MainLayout = () => {
         <Sidebar />
         <main className="flex-1 flex flex-col z-10">
           <Header />
-          <div className="flex-1">
+          <div className="p-2 overflow-auto">
             <Outlet />
           </div>
         </main>
