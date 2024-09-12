@@ -1,6 +1,4 @@
-import { Building2, Gauge, LayoutDashboard, Users, Users2 } from "lucide-react";
-import { TbBuilding, TbHome, TbUsersGroup } from "react-icons/tb";
-import { LuLayoutDashboard } from "react-icons/lu";
+import { Building2, LayoutDashboard, Users } from "lucide-react";
 
 const MenuItems = [
   {

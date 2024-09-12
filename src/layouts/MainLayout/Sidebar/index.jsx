@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import useMenu from "@hooks/useMenu";
 import useScreenSize from "@hooks/useScreenSize";
-// import CompanyLogo from "@assets/images/svg/Company.svg";
-import CompanyLogo from "@assets/images/svg/Company2.svg";
+import CompanyLogo from "@assets/images/svg/Company.svg";
+// import CompanyLogo from "@assets/images/svg/Company2.svg";
 
 // icons
 import { FaCaretRight } from "react-icons/fa6";
@@ -10,12 +10,13 @@ import { FaCaretRight } from "react-icons/fa6";
 import MenuItems from "./MenuItems";
 import { NavLink, useLocation } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
+import AppBar from "@components/AppBar";
 import SubMenu from "./SubMenu";
 
 const Sidebar = () => {
   const location = useLocation();
   const locationName = location.pathname;
-  const { isOpen, setIsOpen, isHover, setIsHover, toggleMenu } = useMenu();
+  const { isOpen, setIsOpen, toggleMenu } = useMenu();
   const { isMobile } = useScreenSize();
 
   const [activeSubmenu, setActiveSubmenu] = useState(null);
@@ -53,38 +54,6 @@ const Sidebar = () => {
       }
     });
     setActiveSubmenu(submenuIndex);
-
-    // const findActiveSubmenu = (menuItems, locationName) => {
-    //   let submenuIndex = null;
-
-    //   menuItems.forEach((menu, i) => {
-    //     // console.log(menu.link.replace(/^\/+/, "").split("/"))
-    //     if (menu.link === locationName) {
-    //       submenuIndex = i;
-    //     } else if (menu.child) {
-    //       const ciIndex = menu.child.findIndex(
-    //         (ci) => ci.link === locationName
-    //       );
-    //       if (ciIndex !== -1) {
-    //         submenuIndex = i;
-    //       } else {
-    //         // Recursively check for nested child menus
-    //         menu.child.forEach((subMenu) => {
-    //           if (subMenu.link === locationName) {
-    //             submenuIndex = i; // set the parent index
-    //           }
-    //         });
-    //       }
-    //     }
-    //   });
-
-    // console.log(submenuIndex);
-
-    // return submenuIndex;
-    // };
-
-    // const activeIndex = findActiveSubmenu(MenuItems, locationName);
-    // ;
 
     document.title = `Dashcode | ${locationName.replace(/\//g, "")}`;
   }, [location]);
@@ -128,7 +97,7 @@ const Sidebar = () => {
                         <span className="text-xl font-thin">{menu.icon}</span>
                       </div>
                       <div className="truncate flex-1 flex justify-between items-center pr-2">
-                        <span className="truncate text-sm font-medium">
+                        <span className="truncate text-sm font-normal">
                           {menu.title}
                         </span>
                       </div>
@@ -143,7 +112,7 @@ const Sidebar = () => {
                           <span className="text-xl font-thin">{menu.icon}</span>
                         </div>
                         <div className="truncate flex-1 flex justify-between items-center pr-2">
-                          <span className="truncate text-sm font-medium">
+                          <span className="truncate text-sm font-normal">
                             {menu.title}
                           </span>
                           <span

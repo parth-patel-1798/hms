@@ -5,7 +5,7 @@ const MenuContext = createContext(null);
 
 export const MenuProvider = ({ children }) => {
   const { isMobile } = useScreenSize();
-  const [isOpen, setIsOpen] = useState(isMobile);
+  const [isOpen, setIsOpen] = useState(!isMobile);
   const [isHover, setIsHover] = useState(false);
 
   function toggleMenu() {

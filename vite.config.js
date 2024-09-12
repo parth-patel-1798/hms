@@ -17,4 +17,8 @@ export default defineConfig({
     },
   },
   plugins: [react()],
+  server: {
+    host: '0.0.0.0',
+    open: true, // Automatically open the browser
+  },
 });
