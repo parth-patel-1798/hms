@@ -7,7 +7,6 @@ const MenuItems = [
     title: "Dashboard",
     link: "/dashboard",
     icon: <LayoutDashboard strokeWidth={1.5} />,
-    // icon: <LuLayoutDashboard strokeWidth={1.25} />,
   },
   {
     title: "Organization",
@@ -27,6 +26,24 @@ const MenuItems = [
           {
             title: "Locations1",
             link: "/organization/departments/location1",
+          },
+          {
+            title: "Departments",
+            child: [
+              {
+                title: "Locations1",
+                link: "/organization/departments/location1",
+              },
+              {
+                title: "Departments",
+                child: [
+                  {
+                    title: "Locations1",
+                    link: "/organization/departments/location2",
+                  },
+                ],
+              },
+            ],
           },
         ],
       },

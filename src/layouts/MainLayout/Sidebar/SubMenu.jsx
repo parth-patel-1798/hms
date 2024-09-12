@@ -64,7 +64,7 @@ const SubMenu = ({ activeSubmenu, item, i, locationName }) => {
 
   return (
     <Collapse isOpened={activeSubmenu === i}>
-      <ul className="p-2 space-y-4">
+      <ul className="p-1 space-y-4">
         {item.child?.map((menu, j) => (
           <li key={j} className="block pl-4 first:pt-2">
             {!menu.child ? (
