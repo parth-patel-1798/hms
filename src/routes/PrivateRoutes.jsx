@@ -3,10 +3,11 @@ import MainLayout from "@layouts/MainLayout";
 import Dashboard from "@views/Dashboard";
 
 const PrivateRoutes = {
+  path: "/hms",
   element: <MainLayout />,
   children: [
     {
-      path: "/dashboard",
+      path: "dashboard",
       element: <Dashboard />,
       loader: () => {
         return true;
@@ -14,7 +15,7 @@ const PrivateRoutes = {
       // errorElement: <div>Error</div>,
     },
     {
-      path: "/employees",
+      path: "employees",
       element: <div>Employees</div>,
       loader: () => {
         return true;
@@ -22,7 +23,7 @@ const PrivateRoutes = {
       errorElement: <div>Error</div>,
     },
     {
-      path: "/organization/location",
+      path: "organization/location",
       element: <div>location</div>,
       loader: () => {
         return true;
@@ -30,7 +31,7 @@ const PrivateRoutes = {
       errorElement: <div>Error</div>,
     },
     {
-      path: "/organization/clients",
+      path: "organization/clients",
       element: <div>clients</div>,
       loader: () => {
         return true;
@@ -38,7 +39,7 @@ const PrivateRoutes = {
       errorElement: <div>Error</div>,
     },
     {
-      path: "/organization/departments/location1",
+      path: "organization/departments/location1",
       element: <div>department</div>,
       loader: () => {
         return true;

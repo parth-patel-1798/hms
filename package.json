@@ -1,7 +1,7 @@
 {
   "name": "vite-project",
-  "homepage": "https://parth-patel-1798.github.io/hms",
-  "private": false,
+  "homepage": "https://parth-patel-1798.github.io/hms/",
+  "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {

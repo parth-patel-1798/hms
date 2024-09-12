@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import useMenu from "@hooks/useMenu";
 import useScreenSize from "@hooks/useScreenSize";
-import CompanyLogo from "@assets/images/svg/Company.svg";
-// import CompanyLogo from "@assets/images/svg/Company2.svg";
-
-// icons
-import { FaCaretRight } from "react-icons/fa6";
+// import CompanyLogo from "@assets/images/svg/Company.svg";
+import CompanyLogo from "@assets/images/svg/Company2.svg";
 
 import MenuItems from "./MenuItems";
 import { NavLink, useLocation } from "react-router-dom";

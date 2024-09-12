@@ -3,7 +3,7 @@ import { Building2, LayoutDashboard, Users } from "lucide-react";
 const MenuItems = [
   {
     title: "Dashboard",
-    link: "/dashboard",
+    link: "dashboard",
     icon: <LayoutDashboard strokeWidth={1.5} />,
   },
   {
@@ -12,36 +12,18 @@ const MenuItems = [
     child: [
       {
         title: "Locations",
-        link: "/organization/location",
+        link: "organization/location",
       },
       {
         title: "Clients",
-        link: "/organization/clients",
+        link: "organization/clients",
       },
       {
         title: "Departments",
         child: [
           {
             title: "Locations1",
-            link: "/organization/departments/location1",
-          },
-          {
-            title: "Departments",
-            child: [
-              {
-                title: "Locations1",
-                link: "/organization/departments/location1",
-              },
-              {
-                title: "Departments",
-                child: [
-                  {
-                    title: "Locations1",
-                    link: "/organization/departments/location2",
-                  },
-                ],
-              },
-            ],
+            link: "organization/departments/location1",
           },
         ],
       },
@@ -49,7 +31,7 @@ const MenuItems = [
   },
   {
     title: "Employees",
-    link: "/employees",
+    link: "employees",
     icon: <Users strokeWidth={1.5} />,
   },
 ];
