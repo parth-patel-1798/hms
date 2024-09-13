@@ -1,4 +1,4 @@
-import { Building2, LayoutDashboard, Users } from "lucide-react";
+import { Building2, LayoutDashboard, Settings, Users } from "lucide-react";
 
 const MenuItems = [
   {
@@ -18,21 +18,26 @@ const MenuItems = [
         title: "Clients",
         link: "organization/clients",
       },
-      {
-        title: "Departments",
-        child: [
-          {
-            title: "Locations1",
-            link: "organization/departments/location1",
-          },
-        ],
-      },
     ],
   },
   {
     title: "Employees",
     link: "employees",
     icon: <Users strokeWidth={1.5} />,
+  },
+  {
+    title: "Settings",
+    icon: <Settings strokeWidth={1.5} />,
+    child: [
+      {
+        title: "General Settings",
+        link: "settings/general",
+      },
+      {
+        title: "System Settings",
+        link: "settings/system",
+      },
+    ],
   },
 ];
 

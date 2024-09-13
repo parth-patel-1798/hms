@@ -5,7 +5,7 @@ const MenuContext = createContext(null);
 
 export const MenuProvider = ({ children }) => {
   const { isMobile } = useScreenSize();
-  const [isOpen, setIsOpen] = useState(!isMobile);
+  const [isOpen, setIsOpen] = useState(false);
   const [isHover, setIsHover] = useState(false);
 
   function toggleMenu() {
@@ -16,16 +16,13 @@ export const MenuProvider = ({ children }) => {
     setIsOpen(!isMobile);
   }, [isMobile]);
 
-  const providerValue = useMemo(
-    () => ({
-      isOpen,
-      setIsOpen,
-      isHover,
-      setIsHover,
-      toggleMenu,
-    }),
-    [isOpen, isHover, toggleMenu]
-  );
+  const providerValue = {
+    isOpen,
+    setIsOpen,
+    isHover,
+    setIsHover,
+    toggleMenu,
+  };
   return (
     <MenuContext.Provider value={providerValue}>
       {children}

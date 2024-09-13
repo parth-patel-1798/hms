@@ -7,6 +7,14 @@ const PrivateRoutes = {
   element: <MainLayout />,
   children: [
     {
+      path: "profile",
+      element: <div>Profile</div>,
+      loader: () => {
+        return true;
+      },
+      // errorElement: <div>Error</div>,
+    },
+    {
       path: "dashboard",
       element: <Dashboard />,
       loader: () => {
@@ -39,8 +47,16 @@ const PrivateRoutes = {
       errorElement: <div>Error</div>,
     },
     {
-      path: "organization/departments/location1",
-      element: <div>department</div>,
+      path: "settings/general",
+      element: <div>general</div>,
+      loader: () => {
+        return true;
+      },
+      errorElement: <div>Error</div>,
+    },
+    {
+      path: "settings/system",
+      element: <div>system</div>,
       loader: () => {
         return true;
       },

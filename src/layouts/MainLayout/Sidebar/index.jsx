@@ -62,13 +62,11 @@ const Sidebar = () => {
           isOpen ? "w-64" : "w-0 md:w-[56px] md:hover:w-64"
         } 
         ${isMobile ? "absolute top-0 left-0" : "relative"}`}
-        // onMouseEnter={() => setIsHover(true)}
-        // onMouseLeave={() => setIsHover(false)}
       >
         <nav className={`truncate md:whitespace-normal flex-1 flex flex-col`}>
           {/* head */}
           <div className="p-2">
-            <div className={`sidebar-title px-2 pt-1 pb-3`}>
+            <div className={`sidebar-title px-2 pt-1`}>
               <img src={CompanyLogo} className="h-10" alt="Company Logo" />
               <div className={`logo-text truncate relative inline-block`}>
                 <span className="font-semibold text-slate-900">
@@ -119,7 +117,6 @@ const Sidebar = () => {
                           }`}
                         onClick={() => {
                           toggleSubmenu(i);
-                          toggleMenu();
                         }}
                       >
                         <div className="pl-2 truncate md:whitespace-normal md:overflow-visible">
@@ -136,12 +133,14 @@ const Sidebar = () => {
                           </span>
                         </div>
                       </div>
-                      <SubMenu
-                        activeSubmenu={activeSubmenu}
-                        item={menu}
-                        i={i}
-                        locationName={locationName}
-                      />
+                      <div className={`${isOpen ? "" : "collapse-menu"}`}>
+                        <SubMenu
+                          activeSubmenu={activeSubmenu}
+                          item={menu}
+                          i={i}
+                          locationName={locationName}
+                        />
+                      </div>
                     </>
                   )}
                 </li>

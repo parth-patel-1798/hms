@@ -5,7 +5,7 @@ import { Collapse } from "react-collapse";
 import { NavLink } from "react-router-dom";
 
 const SubMenu = ({ activeSubmenu, item, i, locationName }) => {
-  const { isOpen } = useMenu();
+  const { toggleMenu } = useMenu();
 
   const [activeMultiMenu, setMultiMenu] = useState(null);
 
@@ -39,7 +39,6 @@ const SubMenu = ({ activeSubmenu, item, i, locationName }) => {
           if (ciIndex !== -1) {
             submenuIndex = i;
           } else {
-            // Recursively check for nested child menus
             menu.child.forEach((subMenu, j) => {
               if (subMenu.link === locationName || subMenu.child) {
                 submenuIndex = i; // set the parent index
@@ -55,13 +54,6 @@ const SubMenu = ({ activeSubmenu, item, i, locationName }) => {
     setMultiMenu(activeIndex);
   }, [location]);
 
-  //   console.log(" ");
-  //   console.log("activeSubmenu", activeSubmenu);
-  //   console.log("locationName", locationName);
-  //   console.log("activeSubmenu", activeSubmenu);
-  //   console.log("activeMultiMenu", activeMultiMenu);
-  //   console.log(" ");
-
   return (
     <Collapse isOpened={activeSubmenu === i}>
       <ul className="p-1 space-y-4">
@@ -70,8 +62,18 @@ const SubMenu = ({ activeSubmenu, item, i, locationName }) => {
             {!menu.child ? (
               <NavLink
                 to={menu.link}
-                className={`w-full cursor-pointer inline-flex gap-2 items-center rounded-lg hover:text-cyan-800 hover:font-medium`}
-                onClick={() => toggleMultiMenu(j)}
+                // className={`w-full cursor-pointer inline-flex gap-2 items-center rounded-lg font-normal hover:text-cyan-800 hover:font-medium`}
+                onClick={() => {
+                  toggleMultiMenu(j);
+                  toggleMenu();
+                }}
+                className={({ isActive }) =>
+                  `w-full cursor-pointer inline-flex gap-2 items-center rounded-lg ${
+                    isActive
+                      ? "text-cyan-800 font-semibold"
+                      : "hover:text-cyan-800 font-normal"
+                  }`
+                }
               >
                 {menu.icon && (
                   <div className="pl-2 truncate md:whitespace-normal md:overflow-visible">
@@ -79,9 +81,7 @@ const SubMenu = ({ activeSubmenu, item, i, locationName }) => {
                   </div>
                 )}
                 <div className="truncate flex-1 flex justify-between items-center pr-2">
-                  <span className="truncate text-sm font-medium">
-                    {menu.title}
-                  </span>
+                  <span className="truncate text-sm">{menu.title}</span>
                 </div>
               </NavLink>
             ) : (
