@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useMemo, useState } from "react";
 import useScreenSize from "@hooks/useScreenSize";
 
 const MenuContext = createContext(null);
@@ -9,16 +9,27 @@ export const MenuProvider = ({ children }) => {
   const [isHover, setIsHover] = useState(false);
 
   function toggleMenu() {
-    isMobile && setIsOpen(!isOpen);
+    if (isMobile) setIsOpen((prevState) => !prevState);
   }
 
   useEffect(() => {
     setIsOpen(!isMobile);
   }, [isMobile]);
 
-  const ProviderObj = { isOpen, setIsOpen, isHover, setIsHover, toggleMenu };
+  const providerValue = useMemo(
+    () => ({
+      isOpen,
+      setIsOpen,
+      isHover,
+      setIsHover,
+      toggleMenu,
+    }),
+    [isOpen, isHover, toggleMenu]
+  );
   return (
-    <MenuContext.Provider value={ProviderObj}>{children}</MenuContext.Provider>
+    <MenuContext.Provider value={providerValue}>
+      {children}
+    </MenuContext.Provider>
   );
 };
 export default MenuContext;
