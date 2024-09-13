@@ -9,10 +9,12 @@ const MainLayout = () => {
     <div className="h-screen bg-slate-100 flex">
       <MenuProvider>
         <Sidebar />
-        <main className="flex-1 flex flex-col z-10">
+        <main className="flex-1 flex flex-col z-10 overflow-hidden">
           <Header />
-          <div className="px-1 py-0.5 overflow-auto h-full">
-            <Outlet />
+          <div className="flex-1 overflow-auto">
+            <div className="">
+              <Outlet />
+            </div>
           </div>
         </main>
       </MenuProvider>

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import useMenu from "@hooks/useMenu";
 import useScreenSize from "@hooks/useScreenSize";
-// import CompanyLogo from "@assets/images/svg/Company.svg";
-import CompanyLogo from "@assets/images/svg/Company2.svg";
+import CompanyLogo from "@assets/images/svg/Company.svg";
+// import CompanyLogo from "@assets/images/svg/Company2.svg";
 
 import MenuItems from "./MenuItems";
 import { NavLink, useLocation } from "react-router-dom";
@@ -70,7 +70,7 @@ const Sidebar = () => {
               <img src={CompanyLogo} className="h-10" alt="Company Logo" />
               <div className={`logo-text truncate relative inline-block`}>
                 <span className="font-semibold text-slate-900">
-                  Human Research
+                  Hospital
                 </span>
                 <small className="block text-xs text-slate-500 font-medium">
                   Management System

@@ -3,7 +3,7 @@ import MainLayout from "@layouts/MainLayout";
 import Dashboard from "@views/Dashboard";
 
 const PrivateRoutes = {
-  path: "/hms",
+  path: "/",
   element: <MainLayout />,
   children: [
     {
@@ -24,7 +24,7 @@ const PrivateRoutes = {
     },
     {
       path: "organization/location",
-      element: <div>location</div>,
+      element: <div>Location</div>,
       loader: () => {
         return true;
       },
@@ -32,7 +32,7 @@ const PrivateRoutes = {
     },
     {
       path: "organization/clients",
-      element: <div>clients</div>,
+      element: <div>Clients</div>,
       loader: () => {
         return true;
       },
@@ -40,7 +40,7 @@ const PrivateRoutes = {
     },
     {
       path: "organization/departments/location1",
-      element: <div>department</div>,
+      element: <div>Department</div>,
       loader: () => {
         return true;
       },
@@ -48,4 +48,5 @@ const PrivateRoutes = {
     },
   ],
 };
+
 export default PrivateRoutes;

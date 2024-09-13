@@ -64,6 +64,16 @@ const BarChart = () => {
     fill: {
       opacity: 0.8,
     },
+    responsive: [
+      {
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: "100%",
+          },
+        },
+      },
+    ],
   };
 
   const series = [
@@ -78,7 +88,13 @@ const BarChart = () => {
   ];
 
   return (
-    <ApexCharts options={options} series={series} type="bar" height={350} />
+    <ApexCharts
+      options={options}
+      series={series}
+      type="bar"
+      height={350}
+      width={"100%"}
+    />
   );
 };
 

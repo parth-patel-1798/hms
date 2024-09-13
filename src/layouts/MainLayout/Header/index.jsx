@@ -14,7 +14,6 @@ const Header = () => {
         className="cursor-pointer content-center p-2"
         onClick={() => {
           setIsOpen(!isOpen);
-          console.log("clicked");
         }}
       >
         <FiMenu />

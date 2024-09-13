@@ -1,7 +1,10 @@
-import { createBrowserRouter, createHashRouter } from "react-router-dom";
+import React from "react";
+import { createBrowserRouter, createHashRouter, RouterProvider } from "react-router-dom";
 import PrivateRoutes from "./PrivateRoutes";
 
 export default function AppRoutes() {
-  // return createHashRouter([PrivateRoutes]);
-  return createBrowserRouter([PrivateRoutes]);
+  const router = createHashRouter([PrivateRoutes]);
+  // const router = createBrowserRouter([PrivateRoutes]);
+
+  return <RouterProvider router={router} />;
 }
