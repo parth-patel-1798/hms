@@ -2,6 +2,8 @@ import React from "react";
 import MainLayout from "@layouts/MainLayout";
 import Dashboard from "@views/Dashboard";
 import Patient from "@views/Patient";
+import AddPatient from "@views/Patient/AddPatient";
+import EditPatient from "@views/Patient/EditPatient";
 
 const PrivateRoutes = {
   path: "/",
@@ -29,7 +31,23 @@ const PrivateRoutes = {
       loader: () => {
         return true;
       },
-      // errorElement: <div>Error</div>,
+      errorElement: <div>Error</div>,
+    },
+    {
+      path: "patients/create",
+      element: <AddPatient />,
+      loader: () => {
+        return true;
+      },
+      errorElement: <div>Error</div>,
+    },
+    {
+      path: "patients/edit/:id",
+      element: <EditPatient />,
+      loader: () => {
+        return true;
+      },
+      errorElement: <div>Error</div>,
     },
     {
       path: "settings/general",

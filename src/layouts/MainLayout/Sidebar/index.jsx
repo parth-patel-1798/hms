@@ -151,7 +151,7 @@ const Sidebar = () => {
       </aside>
       <div
         className={`fixed inset-0 bg-black ${
-          isOpen ? "bg-opacity-50 z-30" : "bg-opacity-0 z-0"
+          isOpen ? "bg-opacity-10 z-30" : "bg-opacity-0 z-0"
         } transition-all duration-300 md:hidden`}
         onClick={() => setIsOpen(false)}
       />

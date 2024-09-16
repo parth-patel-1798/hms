@@ -7,8 +7,15 @@ import { MdOutlineChevronLeft, MdOutlineChevronRight } from "react-icons/md";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { GrEdit } from "react-icons/gr";
 import { CiFilter } from "react-icons/ci";
+import { useNavigate } from "react-router-dom";
+import { FiFilter, FiPlusCircle } from "react-icons/fi";
 
 const Patient = () => {
+  const navigation = useNavigate();
+
+  const handleEdit = (id) => {
+    return navigation(`edit/${id}`);
+  };
   return (
     <div className="flex flex-col gap-2">
       {/* Breadcrumb */}
@@ -23,17 +30,32 @@ const Patient = () => {
 
       {/* List */}
       <div className="bg-white grid grid-cols-1 gap-3 p-2 rounded-lg">
-        <div className="flex items-center gap-2">
-          <span className="flex-grow font-medium truncate">Patients List</span>
-          <span className="text-lg font-bold cursor-pointer">
-            <CiFilter />
-          </span>
+        <div className="flex flex-col sm:flex-row gap-2 items-center">
+          <span className="flex-grow font-medium w-full">Patients List</span>
+          <div className="flex gap-2 w-full sm:w-auto">
+            <button
+              className="p-2 w-full md:w-auto rounded-md border inline-flex gap-1 items-center"
+              onClick={() => navigation("create")}
+            >
+              <FiPlusCircle className="text-gray-500" />
+              <span className="text-sm font-medium text-gray-500 cursor-pointer">
+                Add
+              </span>
+            </button>
+            <button className="p-2 w-full md:w-auto rounded-md border inline-flex gap-1 items-center">
+              <FiFilter className="text-gray-500" />
+              <span className="text-sm font-medium text-gray-500 cursor-pointer">
+                Filter
+              </span>
+            </button>
+          </div>
           <input
             type="search"
-            className="border rounded-md p-2 outline-none text-sm w-52"
+            className="border rounded-md p-2 outline-none text-sm w-full sm:w-52"
             placeholder="Search"
           />
         </div>
+
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white border-gray-300">
             <thead className="text-sm font-normal w-full bg-gray-200">
@@ -47,7 +69,11 @@ const Patient = () => {
             </thead>
             <tbody>
               {PatientData.map((patient) => (
-                <PatientRow key={patient.id} patient={patient} />
+                <PatientRow
+                  key={patient.id}
+                  patient={patient}
+                  handleEdit={handleEdit}
+                />
               ))}
             </tbody>
           </table>
@@ -76,7 +102,7 @@ const Patient = () => {
 
 export default Patient;
 
-const PatientRow = React.memo(({ patient }) => {
+const PatientRow = React.memo(({ patient, handleEdit }) => {
   return (
     <tr className="bg-white hover:bg-gray-100 rounded-md items-center">
       <td className="p-2 flex gap-2">
@@ -99,7 +125,10 @@ const PatientRow = React.memo(({ patient }) => {
       </td>
       <td className="p-2 text-xs font-normal truncate">{patient.address}</td>
       <td className="p-2 float-right flex gap-2">
-        <button className="text-slate-900 cursor-pointer">
+        <button
+          className="text-slate-900 cursor-pointer"
+          onClick={() => handleEdit(patient.id)}
+        >
           <GrEdit />
         </button>
         <button className="text-red-800 cursor-pointer">

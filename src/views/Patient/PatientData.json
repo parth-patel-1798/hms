@@ -1,6 +1,6 @@
 [
   {
-    "id": "#HCUX65656zx",
+    "id": "HCUX65656zx",
     "name": "John Wick",
     "age": 35,
     "email": "john.wick@example.com",
@@ -9,7 +9,7 @@
     "avatar": "path/to/avatar1.png"
   },
   {
-    "id": "#HCUX12345ab",
+    "id": "HCUX12345ab",
     "name": "Jane Doe",
     "age": 29,
     "email": "jane.doe@example.com",
@@ -18,7 +18,7 @@
     "avatar": "path/to/avatar2.png"
   },
   {
-    "id": "#HCUX78910cd",
+    "id": "HCUX78910cd",
     "name": "Michael Smith",
     "age": 42,
     "email": "michael.smith@example.com",
@@ -27,7 +27,7 @@
     "avatar": "path/to/avatar3.png"
   },
   {
-    "id": "#HCUX11223xy",
+    "id": "HCUX11223xy",
     "name": "Emily Clark",
     "age": 31,
     "email": "emily.clark@example.com",
@@ -36,7 +36,7 @@
     "avatar": "path/to/avatar4.png"
   },
   {
-    "id": "#HCUX44567ef",
+    "id": "HCUX44567ef",
     "name": "William Johnson",
     "age": 38,
     "email": "william.johnson@example.com",
@@ -45,7 +45,7 @@
     "avatar": "path/to/avatar5.png"
   },
   {
-    "id": "#HCUX99876gh",
+    "id": "HCUX99876gh",
     "name": "Sophia Martinez",
     "age": 27,
     "email": "sophia.martinez@example.com",
@@ -54,7 +54,7 @@
     "avatar": "path/to/avatar6.png"
   },
   {
-    "id": "#HCUX32452jk",
+    "id": "HCUX32452jk",
     "name": "James Brown",
     "age": 45,
     "email": "james.brown@example.com",
@@ -63,7 +63,7 @@
     "avatar": "path/to/avatar7.png"
   },
   {
-    "id": "#HCUX78789lm",
+    "id": "HCUX78789lm",
     "name": "Ava Wilson",
     "age": 33,
     "email": "ava.wilson@example.com",
@@ -72,7 +72,7 @@
     "avatar": "path/to/avatar8.png"
   },
   {
-    "id": "#HCUX23453no",
+    "id": "HCUX23453no",
     "name": "David Lee",
     "age": 39,
     "email": "david.lee@example.com",
@@ -81,7 +81,7 @@
     "avatar": "path/to/avatar9.png"
   },
   {
-    "id": "#HCUX65432pq",
+    "id": "HCUX65432pq",
     "name": "Isabella Davis",
     "age": 30,
     "email": "isabella.davis@example.com",

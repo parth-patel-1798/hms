@@ -6,7 +6,7 @@ import Sidebar from "./Sidebar";
 
 const MainLayout = () => {
   return (
-    <div className="h-dvh bg-slate-100 flex">
+    <div className="relative h-dvh bg-slate-100 flex">
       <MenuProvider>
         <Sidebar />
         <main className="flex-1 flex flex-col z-10 overflow-hidden">

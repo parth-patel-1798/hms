@@ -84,11 +84,12 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-5 gap-2 pt-2">
+      {/* For Future */}
+      {/* <div className="grid grid-cols-1 sm:grid-cols-5 gap-2 pt-2">
         <div className="col-span-1 sm:col-span-2 p-2 bg-white rounded-lg">
           <PatientReview />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
