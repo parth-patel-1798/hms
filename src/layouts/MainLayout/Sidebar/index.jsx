@@ -12,7 +12,7 @@ import SubMenu from "./SubMenu";
 
 const Sidebar = () => {
   const location = useLocation();
-  const locationName = location.pathname;
+  const locationName = location.pathname.replace(/^\/+/, "");
   const { isOpen, setIsOpen, toggleMenu } = useMenu();
   const { isMobile } = useScreenSize();
 
@@ -27,7 +27,7 @@ const Sidebar = () => {
   };
 
   useEffect(() => {
-    const locationArray = locationName.replace(/^\/+/, "").split("/");
+    const locationArray = locationName.split("/");
     let submenuIndex = null;
 
     MenuItems.map((menu, i) => {
@@ -58,15 +58,15 @@ const Sidebar = () => {
   return (
     <>
       <aside
-        className={`app-bar ${isOpen ? "w-64" : "w-0 md:w-[56px] hover:w-64"} 
+        className={`sidebar ${
+          isOpen ? "w-64" : "w-0 md:w-[56px] md:hover:w-64"
+        } 
         ${isMobile ? "absolute top-0 left-0" : "relative"}`}
-        // onMouseEnter={() => setIsHover(true)}
-        // onMouseLeave={() => setIsHover(false)}
       >
         <nav className={`truncate md:whitespace-normal flex-1 flex flex-col`}>
           {/* head */}
           <div className="p-2">
-            <div className={`app-bar-title px-2 pt-1 pb-3`}>
+            <div className={`sidebar-title px-2 pt-1`}>
               <img src={CompanyLogo} className="h-10" alt="Company Logo" />
               <div className={`logo-text truncate relative inline-block`}>
                 <span className="font-semibold text-slate-900">
@@ -80,38 +80,50 @@ const Sidebar = () => {
           </div>
 
           {/* Menu */}
-          <div className="app-bar-menu overflow-auto p-2">
+          <div className="sidebar-menu overflow-auto p-2">
             <ul className="flex flex-col gap-1 py-2">
               {MenuItems.map((menu, i) => (
                 <li key={i}>
                   {!menu.child ? (
                     <NavLink
                       to={menu.link}
-                      className={`w-full cursor-pointer inline-flex gap-2 items-center rounded-lg hover:bg-cyan-400/20 hover:text-cyan-800 hover:font-medium py-2`}
-                      onClick={() => toggleSubmenu(i)}
+                      className={({ isActive }) =>
+                        `w-full cursor-pointer inline-flex gap-2 items-center rounded-lg hover:bg-cyan-400/20 py-2 ${
+                          isActive
+                            ? "sidebar-parent-active"
+                            : "hover:text-cyan-800 hover:font-medium"
+                        }`
+                      }
+                      onClick={() => {
+                        toggleSubmenu(i);
+                        toggleMenu();
+                      }}
                     >
                       <div className="pl-2 truncate md:whitespace-normal md:overflow-visible">
-                        <span className="text-xl font-thin">{menu.icon}</span>
+                        <span className="text-xl">{menu.icon}</span>
                       </div>
                       <div className="truncate flex-1 flex justify-between items-center pr-2">
-                        <span className="truncate text-sm font-normal">
-                          {menu.title}
-                        </span>
+                        <span className="truncate text-sm">{menu.title}</span>
                       </div>
                     </NavLink>
                   ) : (
                     <>
                       <div
-                        className={`w-full cursor-pointer inline-flex gap-2 items-center rounded-lg hover:bg-cyan-400/20 hover:text-cyan-800 hover:font-medium py-2`}
-                        onClick={() => toggleSubmenu(i)}
+                        className={`w-full cursor-pointer inline-flex gap-2 items-center rounded-lg py-2
+                          ${
+                            activeSubmenu === i
+                              ? "sidebar-parent-active"
+                              : "hover:bg-cyan-400/20 hover:text-cyan-800 hover:font-medium"
+                          }`}
+                        onClick={() => {
+                          toggleSubmenu(i);
+                        }}
                       >
                         <div className="pl-2 truncate md:whitespace-normal md:overflow-visible">
                           <span className="text-xl font-thin">{menu.icon}</span>
                         </div>
                         <div className="truncate flex-1 flex justify-between items-center pr-2">
-                          <span className="truncate text-sm font-normal">
-                            {menu.title}
-                          </span>
+                          <span className="truncate text-sm">{menu.title}</span>
                           <span
                             className={`truncate ${
                               activeSubmenu === i ? "rotate-90" : ""
@@ -121,12 +133,14 @@ const Sidebar = () => {
                           </span>
                         </div>
                       </div>
-                      <SubMenu
-                        activeSubmenu={activeSubmenu}
-                        item={menu}
-                        i={i}
-                        locationName={locationName}
-                      />
+                      <div className={`${isOpen ? "" : "collapse-menu"}`}>
+                        <SubMenu
+                          activeSubmenu={activeSubmenu}
+                          item={menu}
+                          i={i}
+                          locationName={locationName}
+                        />
+                      </div>
                     </>
                   )}
                 </li>

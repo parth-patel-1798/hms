@@ -3,14 +3,11 @@ import { FaUser, FaUserDoctor } from "react-icons/fa6";
 import { FcCalendar, FcMoneyTransfer } from "react-icons/fc";
 import BarChart from "./ChartData/BarChart";
 import PatientReview from "./Widgets/PatientReview";
-// import PatientDemographicsChart from "./ChartData/PatientDemographicsChart";
-import PatientVisitsChart from "./ChartData/PatientVisitsChart";
-import PatientDemographicsChart from "./ChartData/PatientDemographicsChart";
-import SmoothAreaChart from "./ChartData/SmoothAreaChart";
+import EventCalender from "./Widgets/EventCalender";
 
 const Dashboard = () => {
   return (
-    <div className="h-full p-2">
+    <div className="h-full">
       <div className="grid grid-cols-1 items-center gap-4">
         <div>
           <label className="flex items-center gap-2">
@@ -78,13 +75,12 @@ const Dashboard = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-5 gap-2 pt-2 ">
-        <div className="col-span-1 sm:col-span-3 p-2 bg-white rounded-lg">
+        <div className="col-span-1 sm:col-span-5 lg:col-span-3 p-2 bg-white rounded-lg">
           <p className="p-2">Total Revenue Chart</p>
           <BarChart />
-          {/* <SmoothAreaChart key={10}/> */}
         </div>
-        <div className="col-span-1 sm:col-span-2 p-2 bg-white rounded-lg place-content-center text-center">
-          Calender Coming Soon
+        <div className="col-span-1 sm:col-span-5 lg:col-span-2 p-4 bg-white rounded-lg">
+          <EventCalender />
         </div>
       </div>
 

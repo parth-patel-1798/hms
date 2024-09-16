@@ -16,7 +16,7 @@ const AppBar = ({ children, open, mobile, className, onClose }) => {
     defaultVariants: {},
   });
 
-  const AppNavVariant = cva("app-bar-nav", {
+  const AppNavVariant = cva("sidebar-nav", {
     variants: {
       open: {
         true: ["px-2"],
