@@ -1,5 +1,5 @@
 .transition-padding {
-  transition: padding 0.4s ease-in-out;
+    transition: padding 0.4s ease-in-out;
 }
 
 // .app-bar {
@@ -18,32 +18,30 @@
 //   @apply flex-1 h-full rounded-md;
 // }
 
-
 .sidebar {
-  @apply flex flex-col gap-2 h-full bg-white rounded-r-lg transition-all duration-500 z-40;
+    @apply flex flex-col gap-2 h-full bg-white rounded-r-lg transition-all duration-500 z-40;
 }
 
 .sidebar-nav {
-  @apply transition-padding truncate md:whitespace-normal py-2 flex-1 flex flex-col gap-5;
+    @apply transition-padding truncate md:whitespace-normal py-2 flex-1 flex flex-col gap-5;
 }
 
 .sidebar-title {
-  @apply flex gap-2 items-center w-full rounded-md;
+    @apply flex gap-2 items-center w-full rounded-md;
 }
 
 .sidebar-menu {
-  @apply flex-1 h-full rounded-md;
+    @apply flex-1 h-full rounded-md;
 }
 
 .sidebar-parent-active {
-  @apply bg-cyan-400/20 text-cyan-800 font-semibold;
+    @apply bg-cyan-400/20 text-cyan-800 font-semibold;
 }
 
-
 .collapse-menu {
-  @apply block md:hidden;
+    @apply block md:hidden;
 }
 
 .sidebar:hover .collapse-menu {
-  @apply block;
+    @apply block;
 }
