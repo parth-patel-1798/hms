@@ -1,4 +1,5 @@
 import Button from '@components/Button';
+import Typography from '@components/Typography';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -8,6 +9,8 @@ const EditPatient = () => {
     return (
         <div className="flex flex-col gap-5">
             EditPatient : {id}
+
+            <Typography />
             {/* small */}
             <Button size="small" title="Small" className="bg-sky-700" />
             {/* medium */}

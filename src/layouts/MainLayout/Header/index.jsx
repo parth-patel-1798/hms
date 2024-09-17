@@ -5,6 +5,7 @@ import { FiMenu } from 'react-icons/fi';
 import { Bell, Settings } from 'lucide-react';
 import { Menu, MenuItem } from '@components/Menu';
 import { Navigate, NavLink, useNavigate } from 'react-router-dom';
+import Typography from '@components/Typography';
 
 const Header = () => {
     const { isOpen, setIsOpen } = useMenu();
@@ -58,11 +59,15 @@ const Header = () => {
                     }
                 >
                     <MenuItem as={NavLink} to={'/profile'}>
-                        Profile
+                        <Typography variant="body2">Profile</Typography>
                     </MenuItem>
-                    <MenuItem>Settings</MenuItem>
+                    <MenuItem>
+                        <Typography variant="body2">Settings</Typography>
+                    </MenuItem>
                     <MenuItem className="" onClick={() => navigate('/auth/login')}>
-                        <span className="text-red-800 font-medium">Logout</span>
+                        <Typography variant="body2" className="text-red-800 font-medium">
+                            Logout
+                        </Typography>
                     </MenuItem>
                 </Menu>
             </section>
