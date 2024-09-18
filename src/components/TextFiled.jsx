@@ -4,29 +4,34 @@ import { mergeClasses } from '@utils/classUtils';
 import { cva } from 'class-variance-authority';
 
 const TextField = React.forwardRef((props, ref) => {
-    const { type = 'text', size = 'medium', className = '', ...rest } = props;
+    const { type = 'text', size = 'medium', className = '', error = false, ...rest } = props;
 
     // Memoize the variant generation to improve performance
     const InputVariant = useMemo(
         () =>
-            cva('outline-none border rounded transition duration-200 ease-in-out', {
+            cva('rounded-md border outline-none w-full', {
                 variants: {
                     size: {
                         small: 'text-sm px-3 py-1.5',
                         medium: 'text-base px-4 py-2',
                         large: 'text-lg px-5 py-3',
                     },
+                    error: {
+                        true: 'text-red-500 border-red-500',
+                        false: '',
+                    },
                 },
                 defaultVariants: {
                     size: 'medium',
+                    error: 'false',
                 },
             }),
         [],
     );
 
     const computedClassNames = useMemo(
-        () => mergeClasses(InputVariant({ size }), className),
-        [size, className, InputVariant],
+        () => mergeClasses(InputVariant({ size, error }), className),
+        [size, error, className, InputVariant],
     );
 
     return (

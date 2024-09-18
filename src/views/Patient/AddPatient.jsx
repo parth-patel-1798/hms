@@ -1,7 +1,29 @@
-import TextFiled from '@components/TextFiled';
 import React from 'react';
+import TextFiled from '@components/TextFiled';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import Typography from '@components/Typography';
+import { HiChevronUpDown } from 'react-icons/hi2';
+import Select from '@components/Select';
+
+const schema = yup.object().shape({
+    first_name: yup.string().required('First name is required.'),
+});
 
 const AddPatient = () => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
+        resolver: yupResolver(schema),
+    });
+
+    const onSubmit = (data) => {
+        console.log(data);
+    };
+
     return (
         <div className="flex flex-col gap-2">
             {/* Breadcrumb */}
@@ -12,127 +34,133 @@ const AddPatient = () => {
                 <small className="text-xs font-normal text-gray-500">{`Dashboard > Patients > Create Patient`}</small>
             </div>
 
-            {/* Form */}
             <div className="bg-white w-full p-3 rounded-md">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
-                    <div>
-                        <label className="text-sm">First Name</label>
-                        <input
-                            className="text-sm px-2 py-2 rounded-md border outline-none w-full"
-                            placeholder="First Name"
-                        />
-                    </div>
-                    <div>
-                        <label className="text-sm">Last Name</label>
-                        <input
-                            className="text-sm px-2 py-2 rounded-md border outline-none w-full"
-                            placeholder="Last Name"
-                        />
-                    </div>
-                    <div>
-                        <label className="text-sm">Middle Name</label>
-                        <input
-                            className="text-sm px-2 py-2 rounded-md border outline-none w-full"
-                            placeholder="Middle Name"
-                        />
-                    </div>
-                    <div>
-                        <label className="text-sm">Gender</label>
-                        <select className="text-sm px-1 py-2 rounded-md border outline-none w-full appearance bg-white">
-                            <option className="text-sm">Male</option>
-                            <option className="text-sm">Female</option>
-                            <option className="text-sm">Other</option>
-                        </select>
-                    </div>
-                    <div className="col-span-1 md:col-span-2">
-                        <label className="text-sm">Date Of Birth</label>
-                        <input
-                            className="text-sm px-2 py-2 rounded-md border outline-none w-full"
-                            placeholder="Middle Name"
-                        />
-                    </div>
-                    <div className="col-span-1">
-                        <label className="text-sm">SSN Number</label>
-                        <input
-                            className="text-sm px-2 py-2 rounded-md border outline-none w-full"
-                            placeholder="Middle Name"
-                        />
-                    </div>
-                    <div className="col-span-1">
-                        <label className="text-sm">MRN Number</label>
-                        <input
-                            className="text-sm px-2 py-2 rounded-md border outline-none w-full"
-                            placeholder="Middle Name"
-                        />
-                    </div>
-                    <div className="col-span-1 md:col-span-2">
-                        <label className="text-sm truncate">Patient Primary Phone Number</label>
-                        <input
-                            className="text-sm px-2 py-2 rounded-md border outline-none w-full"
-                            placeholder="Patient Primary Phone Number"
-                        />
-                    </div>
-                    <div className="col-span-1 md:col-span-2">
-                        <label className="text-sm truncate">Patient Secondary Phone Number</label>
-                        <input
-                            className="text-sm px-2 py-2 rounded-md border outline-none w-full"
-                            placeholder="Patient Secondary Phone Number"
-                        />
-                    </div>
-                    <div className="col-span-1 md:col-span-2">
-                        <label className="text-sm truncate">Home Phone Number</label>
-                        <input
-                            className="text-sm px-2 py-2 rounded-md border outline-none w-full"
-                            placeholder="Home Phone Number"
-                        />
-                    </div>
-                    <div className="col-span-1 md:col-span-2">
-                        <label className="text-sm truncate">Work Phone Number</label>
-                        <input
-                            className="text-sm px-2 py-2 rounded-md border outline-none w-full"
-                            placeholder="Work Phone Number"
-                        />
-                    </div>
-                    <div className="col-span-1 md:col-span-2">
-                        <label className="text-sm truncate">Patient Email Address</label>
-                        <input
-                            className="text-sm px-2 py-2 rounded-md border outline-none w-full"
-                            placeholder="Patient Email Address"
-                        />
-                    </div>
-                    <div className="col-span-1 md:col-span-2">
-                        <label className="text-sm truncate">Language</label>
-                        <input
-                            className="text-sm px-2 py-2 rounded-md border outline-none w-full"
-                            placeholder="Patient Email Address"
-                        />
-                    </div>
-                    <div className="col-span-1 md:col-span-2">
-                        <label className="text-sm truncate">Race</label>
-                        <input className="text-sm px-2 py-2 rounded-md border outline-none w-full" placeholder="Race" />
-                    </div>
-                    <div className="col-span-1 md:col-span-2">
-                        <label className="text-sm truncate">Ethnicity</label>
-                        <input
-                            className="text-sm px-2 py-2 rounded-md border outline-none w-full"
-                            placeholder="Ethnicity"
-                        />
-                    </div>
-                    <div className="col-span-1 md:col-span-2 lg:col-span-4">
-                        <label className="text-sm truncate">Marital Status</label>
-                        <input
-                            className="text-sm px-2 py-2 rounded-md border outline-none w-full"
-                            placeholder="Ethnicity"
-                        />
+                <div className="pb-3 pt-2">
+                    <Typography className="font-medium">Patient Registration</Typography>
+                </div>
+                {/* Form */}
+                <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
+                    <div className="border rounded-md flex flex-col gap-2 py-2">
+                        <Typography className="px-2">Patient Details</Typography>
+                        <hr />
+                        <div className="px-2 grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-2">
+                            <div className="col-span-1 md:col-span-6 lg:col-span-4">
+                                <Typography variant="body2">First Name</Typography>
+                                <TextFiled
+                                    placeholder="First Name"
+                                    size="small"
+                                    {...register('first_name')}
+                                    error={Boolean(errors?.first_name)}
+                                />
+                            </div>
+                            <div className="col-span-1 md:col-span-6 lg:col-span-4">
+                                <Typography variant="body2">Last Name</Typography>
+                                <TextFiled placeholder="Last Name" size="small" {...register('last_name')} />
+                            </div>
+                            <div className="col-span-1 md:col-span-6 lg:col-span-4">
+                                <Typography variant="body2">Middle Name</Typography>
+                                <TextFiled placeholder="Middle Name" size="small" {...register('middle_name')} />
+                            </div>
+                            <div className="col-span-1 md:col-span-3 lg:col-span-6">
+                                <Typography variant="body2">Gender</Typography>
+                                <Select size="small" {...register('gender')} defaultValue="Male">
+                                    <option className="text-sm">Male</option>
+                                    <option className="text-sm">Female</option>
+                                    <option className="text-sm">Other</option>
+                                </Select>
+                            </div>
+                            <div className="col-span-1 md:col-span-3 lg:col-span-6">
+                                <Typography variant="body2">SSN Number</Typography>
+                                <TextFiled size="small" placeholder="SSN Number" {...register('ssn_number')} />
+                            </div>
+                            <div className="col-span-1 md:col-span-3 lg:col-span-6">
+                                <Typography variant="body2">Date Of Birth</Typography>
+                                <TextFiled placeholder="Date Of Birth" size="small" {...register('date_of_birth')} />
+                            </div>
+                            <div className="col-span-1 md:col-span-3 lg:col-span-6">
+                                <Typography variant="body2">Marital Status</Typography>
+                                <TextFiled size="small" placeholder="Marital Status" {...register('marital_status')} />
+                            </div>
+                            <div className="col-span-1 md:col-span-3 lg:col-span-6">
+                                <Typography variant="body2">Primary Phone Number</Typography>
+                                <TextFiled
+                                    size="small"
+                                    placeholder="Primary Phone Number"
+                                    {...register('primary_phone_number')}
+                                />
+                            </div>
+                            <div className="col-span-1 md:col-span-3 lg:col-span-6">
+                                <Typography variant="body2">Secondary Phone Number</Typography>
+                                <TextFiled
+                                    size="small"
+                                    placeholder="Secondary Phone Number"
+                                    {...register('secondary_phone_number')}
+                                />
+                            </div>
+                            <div className="col-span-1 md:col-span-3 lg:col-span-6">
+                                <Typography variant="body2">Home Phone Number</Typography>
+                                <TextFiled
+                                    size="small"
+                                    placeholder="Home Phone Number"
+                                    {...register('home_phone_number')}
+                                />
+                            </div>
+                            <div className="col-span-1 md:col-span-3 lg:col-span-6">
+                                <Typography variant="body2">Work Phone Number</Typography>
+                                <TextFiled
+                                    size="small"
+                                    placeholder="Work Phone Number"
+                                    {...register('work_phone_number')}
+                                />
+                            </div>
+                            <div className="col-span-1 md:col-span-3 lg:col-span-6">
+                                <label className="text-sm truncate">Email Address</label>
+                                <TextFiled size="small" placeholder="Email Address" {...register('email_address')} />
+                            </div>
+                            <div className="col-span-1 md:col-span-3 lg:col-span-6">
+                                <label className="text-sm truncate">Language</label>
+                                <TextFiled size="small" placeholder="Patient Email Address" {...register('language')} />
+                            </div>
+                        </div>
                     </div>
 
-                    <div className="col-span-1 md:col-span-2 lg:col-span-4 inline-flex gap-2 justify-end">
-                        <button className="p-2 border border-gray-500 text-gray-600 rounded-md">Back</button>
-                        <button className="px-4 py-2 text-white rounded-md bg-teal-700 focus:bg-teal-900 outline-none">
+                    {/* Patient Details Medical Info */}
+                    <div className="border rounded-md flex flex-col gap-2 py-2">
+                        <Typography className="px-2">Patient Medical Info</Typography>
+                        <hr />
+                        <div className="px-2 grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-2">
+                            <div className="col-span-1 md:col-span-3 lg:col-span-6">
+                                <Typography variant="body2">Medical Aid & Private</Typography>
+                                <Select size="small" {...register('medical_private')} defaultValue="">
+                                    <option className="text-sm">Medical Aid Patient</option>
+                                    <option className="text-sm">Private Patient</option>
+                                </Select>
+                            </div>
+                            <div className="col-span-1 md:col-span-3 lg:col-span-6">
+                                <Typography variant="body2">MRN Number</Typography>
+                                <TextFiled size="small" placeholder="MRN Number" {...register('mrn_number')} />
+                            </div>
+                            <div className="col-span-1 md:col-span-3 lg:col-span-6">
+                                <label className="text-sm truncate">Race</label>
+                                <TextFiled size="small" placeholder="Race" {...register('race')} />
+                            </div>
+                            <div className="col-span-1 md:col-span-3 lg:col-span-6">
+                                <label className="text-sm truncate">Ethnicity</label>
+                                <TextFiled size="small" placeholder="Ethnicity" {...register('ethnicity')} />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="inline-flex gap-2 justify-end">
+                        <button className="px-3 py-1.5 border border-gray-500 text-gray-600 rounded-md">Back</button>
+                        <button
+                            type="submit"
+                            className="px-3 py-1.5 text-white rounded-md bg-teal-700 focus:bg-teal-900 outline-none"
+                        >
                             Save & Next
                         </button>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     );
