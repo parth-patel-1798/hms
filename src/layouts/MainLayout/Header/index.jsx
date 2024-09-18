@@ -4,12 +4,17 @@ import ProfilePicture from '@assets/images/ProfilePicture.webp';
 import { FiMenu } from 'react-icons/fi';
 import { Bell, Settings } from 'lucide-react';
 import { Menu, MenuItem } from '@components/Menu';
-import { Navigate, NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Typography from '@components/Typography';
+import { useDispatch } from 'react-redux';
+import { logout } from '@store/authSlice';
+import { useMutation } from '@tanstack/react-query';
+import { LogoutAPI } from '@apis/Authentication';
 
 const Header = () => {
     const { isOpen, setIsOpen } = useMenu();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -24,6 +29,15 @@ const Header = () => {
     const closeMenu = () => {
         setMenuOpen(false);
     };
+
+    const { mutate, isPending } = useMutation({
+        mutationFn: () => LogoutAPI(),
+        onSuccess: (response) => {
+            const { data } = response;
+            dispatch(logout());
+            navigate('/auth/login', { replace: true });
+        },
+    });
 
     return (
         <header className="p-1 flex items-center justify-between">
@@ -64,7 +78,7 @@ const Header = () => {
                     <MenuItem>
                         <Typography variant="body2">Settings</Typography>
                     </MenuItem>
-                    <MenuItem className="" onClick={() => navigate('/auth/login')}>
+                    <MenuItem className="" onClick={() => mutate()}>
                         <Typography variant="body2" className="text-red-800 font-medium">
                             Logout
                         </Typography>

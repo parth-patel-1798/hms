@@ -50,6 +50,7 @@ const AddPatient = () => {
                                     size="small"
                                     {...register('first_name')}
                                     error={Boolean(errors?.first_name)}
+                                    errorText={Boolean(errors.first_name) && errors.first_name.message}
                                 />
                             </div>
                             <div className="col-span-1 md:col-span-6 lg:col-span-4">

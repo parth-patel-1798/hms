@@ -4,15 +4,18 @@ import { FcCalendar, FcMoneyTransfer } from 'react-icons/fc';
 import BarChart from './ChartData/BarChart';
 import PatientReview from './Widgets/PatientReview';
 import EventCalender from './Widgets/EventCalender';
+import { useSelector } from 'react-redux';
 
 const Dashboard = () => {
+    const LoginUser = useSelector((state) => state.auth.user);
+
     return (
         <div className="h-full">
             <div className="grid grid-cols-1 items-center gap-4">
                 <div>
                     <label className="flex items-center gap-2">
                         <span className="font-semibold">Welcome,</span>
-                        <span className="font-normal">John Carter</span>
+                        <span className="font-normal">{LoginUser?.name}</span>
                     </label>
                     <small className="text-xs font-normal text-gray-500">
                         There is the latest update for the last 7 days.

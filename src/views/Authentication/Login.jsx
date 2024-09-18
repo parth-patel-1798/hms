@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import TextFiled from '@components/TextFiled';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -8,27 +8,39 @@ import { useMutation } from '@tanstack/react-query';
 
 import { LoginAPI } from '@apis/Authentication';
 import Button from '@components/Button';
+import { useDispatch } from 'react-redux';
+import { login } from '@store/authSlice';
+import toast from 'react-hot-toast';
 
 const schema = yup.object().shape({
-    email: yup.string().email().required('First name is required.'),
-    password: yup.string().required('First name is required.'),
+    email: yup.string().email('Please enter valid email address.').required('Email is required.'),
+    password: yup.string().required('Password is required.'),
 });
 
 const Login = () => {
+    const dispatch = useDispatch();
     const {
         register,
         handleSubmit,
         formState: { errors },
+        reset,
     } = useForm({
         resolver: yupResolver(schema),
     });
 
-    // const mutation = useMutation({ mutationFn: (data) => LoginAPI(data) });
-    const { mutate, isPending, isError, error } = useMutation({ mutationFn: (data) => LoginAPI(data) });
-
-    const onSubmit = (data) => {
-        mutate(data);
-    };
+    const { mutate, isPending } = useMutation({
+        mutationFn: (data) => LoginAPI(data),
+        onSuccess: (response) => {
+            reset();
+            const { data } = response;
+            dispatch(login({ user: data.data, token: data.accessToken }));
+            toast.success(data.message);
+        },
+        onError: (error) => {
+            const { response } = error;
+            toast.error(response.data.message);
+        },
+    });
 
     return (
         <div className="grid grid-cols-1 gap-4">
@@ -37,13 +49,14 @@ const Login = () => {
                 <small>Sign-in with credentials</small>
             </label>
 
-            <form className="flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
+            <form className="flex flex-col gap-2" onSubmit={handleSubmit(mutate)}>
                 <div className="">
                     <TextFiled
                         type="email"
                         placeholder="Enter Email"
                         {...register('email')}
-                        error={Boolean(errors?.email)}
+                        error={Boolean(errors.email)}
+                        errorText={Boolean(errors.email) && errors.email.message}
                     />
                 </div>
                 <div className="">
@@ -52,6 +65,7 @@ const Login = () => {
                         placeholder="Enter Password"
                         {...register('password')}
                         error={Boolean(errors?.password)}
+                        errorText={Boolean(errors.password) && errors.password.message}
                     />
                 </div>
 

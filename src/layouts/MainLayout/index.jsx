@@ -14,7 +14,9 @@ const MainLayout = () => {
         if (!authData.isAuthenticated) {
             navigate('/auth/login', { replace: true });
         }
-    }, [location]);
+    }, [location, authData]);
+
+    if (!authData.isAuthenticated) return null;
 
     return (
         <div className="relative h-dvh bg-slate-100 flex">

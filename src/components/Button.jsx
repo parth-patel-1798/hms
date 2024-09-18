@@ -30,12 +30,11 @@ const Button = React.forwardRef((props, ref) => {
         [],
     );
 
-    const computedClassNames = useMemo(() => {
-        console.log(disabled);
-        return mergeClasses(ButtonVariant({ size, disabled }), className);
-    }, [size, className, disabled, ButtonVariant]);
+    const computedClassNames = useMemo(
+        () => mergeClasses(ButtonVariant({ size, disabled }), className),
+        [size, className, disabled, ButtonVariant],
+    );
 
-    console.log(computedClassNames);
     return (
         <button type={type} ref={ref} className={computedClassNames} disabled={disabled} {...rest}>
             {children}
