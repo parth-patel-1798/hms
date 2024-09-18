@@ -1,7 +1,35 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import { NavLink } from 'react-router-dom';
+import TextFiled from '@components/TextFiled';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useMutation } from '@tanstack/react-query';
+
+import { LoginAPI } from '@apis/Authentication';
+import Button from '@components/Button';
+
+const schema = yup.object().shape({
+    email: yup.string().email().required('First name is required.'),
+    password: yup.string().required('First name is required.'),
+});
 
 const Login = () => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm({
+        resolver: yupResolver(schema),
+    });
+
+    // const mutation = useMutation({ mutationFn: (data) => LoginAPI(data) });
+    const { mutate, isPending, isError, error } = useMutation({ mutationFn: (data) => LoginAPI(data) });
+
+    const onSubmit = (data) => {
+        mutate(data);
+    };
+
     return (
         <div className="grid grid-cols-1 gap-4">
             <label className="text-center">
@@ -9,21 +37,30 @@ const Login = () => {
                 <small>Sign-in with credentials</small>
             </label>
 
-            <form className="flex flex-col gap-2">
-                <input
-                    type="email"
-                    className="border p-2 outline-none focus:border focus:border-slate-600 rounded-lg"
-                    placeholder="Email"
-                />
-                <input
-                    type="password"
-                    className="border p-2 outline-none focus:border focus:border-slate-600 rounded-lg"
-                    placeholder="Password"
-                />
+            <form className="flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
+                <div className="">
+                    <TextFiled
+                        type="email"
+                        placeholder="Enter Email"
+                        {...register('email')}
+                        error={Boolean(errors?.email)}
+                    />
+                </div>
+                <div className="">
+                    <TextFiled
+                        type="password"
+                        placeholder="Enter Password"
+                        {...register('password')}
+                        error={Boolean(errors?.password)}
+                    />
+                </div>
+
                 <NavLink to={'/auth/forgot-password'} className="text-sm text-end text-indigo-800">
                     Forgot Password ?
                 </NavLink>
-                <button className="p-2 bg-indigo-500 rounded-lg text-white">Sign In</button>
+                <Button type="submit" className="p-2 bg-sky-800 rounded-lg text-white" disabled={isPending}>
+                    Sign In
+                </Button>
             </form>
 
             <span className="text-sm text-center">

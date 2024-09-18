@@ -22,6 +22,14 @@ const PublicRoutes = {
             },
             errorElement: <div>Error</div>,
         },
+        {
+            path: 'reset-password/:token',
+            element: <div>Reset Password</div>,
+            loader: () => {
+                return true;
+            },
+            errorElement: <div>Error</div>,
+        },
     ],
 };
 

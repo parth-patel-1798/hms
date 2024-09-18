@@ -5,7 +5,7 @@ import { cva } from 'class-variance-authority';
 
 // Button component
 const Button = React.forwardRef((props, ref) => {
-    const { title = 'Button', size = 'medium', className = '', ...rest } = props;
+    const { size = 'medium', className = '', type = 'button', disabled = false, children, ...rest } = props;
 
     // Memoize the class names for performance optimization
     const ButtonVariant = useMemo(
@@ -17,28 +17,33 @@ const Button = React.forwardRef((props, ref) => {
                         medium: 'text-base px-4 py-2',
                         large: 'text-lg px-5 py-3',
                     },
+                    disabled: {
+                        true: 'disabled:bg-gray-500 disabled:cursor-not-allowed',
+                        false: '',
+                    },
                 },
                 defaultVariants: {
                     size: 'medium',
+                    disabled: 'false',
                 },
             }),
         [],
     );
 
-    const computedClassNames = useMemo(
-        () => mergeClasses(ButtonVariant({ size }), className),
-        [size, className, ButtonVariant],
-    );
+    const computedClassNames = useMemo(() => {
+        console.log(disabled);
+        return mergeClasses(ButtonVariant({ size, disabled }), className);
+    }, [size, className, disabled, ButtonVariant]);
 
+    console.log(computedClassNames);
     return (
-        <button ref={ref} className={computedClassNames} aria-label={title} {...rest}>
-            {title}
+        <button type={type} ref={ref} className={computedClassNames} disabled={disabled} {...rest}>
+            {children}
         </button>
     );
 });
 
 Button.propTypes = {
-    title: PropTypes.string,
     size: PropTypes.oneOf(['small', 'medium', 'large']),
     className: PropTypes.string,
 };

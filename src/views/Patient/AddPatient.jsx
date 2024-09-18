@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Typography from '@components/Typography';
-import { HiChevronUpDown } from 'react-icons/hi2';
 import Select from '@components/Select';
 
 const schema = yup.object().shape({

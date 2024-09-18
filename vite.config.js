@@ -7,6 +7,7 @@ export default defineConfig({
     base: '/hms/',
     resolve: {
         alias: {
+            '@apis': path.resolve(__dirname, 'src/apis'),
             '@assets': path.resolve(__dirname, 'src/assets'),
             '@configs': path.resolve(__dirname, 'src/configs'),
             '@views': path.resolve(__dirname, 'src/views'),

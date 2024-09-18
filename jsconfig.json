@@ -5,6 +5,9 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
+      "@apis/*": [
+        "src/apis/*"
+      ],
       "@assets/*": [
         "src/assets/*"
       ],

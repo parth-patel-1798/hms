@@ -1,7 +1,7 @@
 import axios from 'axios';
 import config from './config';
-import { store } from 'src/store';
-import { logout } from 'src/store/authSlice';
+import { logout } from '../store/authSlice';
+import { store } from '../store';
 
 const axiosClient = axios.create({
     baseURL: `${config.apiBaseURL}`,
@@ -12,8 +12,14 @@ const axiosClient = axios.create({
     },
 });
 
+// Request Interceptor: Attach Authorization token to every request
 axiosClient.interceptors.request.use(
     (req) => {
+        // const authToken = JSON.parse(localStorage.getItem('authToken') || '');
+        const authToken = '';
+        if (authToken) {
+            req.headers.Authorization = `Bearer ${authToken}`;
+        }
         return req;
     },
     (error) => {
@@ -22,14 +28,14 @@ axiosClient.interceptors.request.use(
     },
 );
 
+// Response Interceptor: Handle Unauthorized Access (401)
 axiosClient.interceptors.response.use(
-    (res) => {
-        return res;
-    },
+    (res) => res,
     (error) => {
-        if (error.response && error.responses.status === 401) {
-            store.dispatch(logout);
+        if (error.response && error.response.status === 401) {
+            store.dispatch(logout());
         }
+        return Promise.reject(error);
     },
 );
 
