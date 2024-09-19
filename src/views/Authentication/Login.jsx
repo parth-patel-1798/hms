@@ -1,6 +1,5 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import TextFiled from '@components/TextFiled';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -25,6 +24,7 @@ const Login = () => {
         formState: { errors },
         reset,
     } = useForm({
+        defaultValues: { email: 'admin@gmail.com', password: '123456789' },
         resolver: yupResolver(schema),
     });
 
@@ -44,11 +44,7 @@ const Login = () => {
 
     return (
         <div className="grid grid-cols-1 gap-4">
-            <label className="text-center">
-                <p className="font-semibold">Welcome Back</p>
-                <small>Sign-in with credentials</small>
-            </label>
-
+            <small className="text-center">Sign-in with credentials</small>
             <form className="flex flex-col gap-2" onSubmit={handleSubmit(mutate)}>
                 <div className="">
                     <TextFiled
@@ -72,7 +68,11 @@ const Login = () => {
                 <NavLink to={'/auth/forgot-password'} className="text-sm text-end text-indigo-800">
                     Forgot Password ?
                 </NavLink>
-                <Button type="submit" className="p-2 bg-sky-800 rounded-lg text-white" disabled={isPending}>
+                <Button
+                    type="submit"
+                    className="p-2 bg-teal-700 hover:bg-teal-900 rounded-lg text-white"
+                    disabled={isPending}
+                >
                     Sign In
                 </Button>
             </form>

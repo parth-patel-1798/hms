@@ -56,12 +56,14 @@ const Sidebar = () => {
     return (
         <>
             <aside
-                className={`sidebar ${isOpen ? 'w-64' : 'w-0 md:w-[56px] md:hover:w-64'} 
-        ${isMobile ? 'absolute top-0 left-0' : 'relative'}`}
+                className={`sidebar 
+                    ${isOpen ? 'w-64' : 'w-0 md:w-[56px] md:hover:w-64'} 
+                    ${isMobile ? 'absolute top-0 left-0' : 'relative'}
+                `}
             >
                 <nav className={`truncate md:whitespace-normal flex-1 flex flex-col`}>
                     {/* head */}
-                    <div className="p-2">
+                    {/* <div className="p-2">
                         <div className={`sidebar-title px-2 pt-1`}>
                             <img src={CompanyLogo} className="h-10" alt="Company Logo" />
                             <div className={`logo-text truncate relative inline-block`}>
@@ -69,7 +71,7 @@ const Sidebar = () => {
                                 <small className="block text-xs text-slate-500 font-medium">Management System</small>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                     {/* Menu */}
                     <div className="sidebar-menu overflow-auto p-2">

@@ -4,6 +4,10 @@ import Dashboard from '@views/Dashboard';
 import Patient from '@views/Patient';
 import AddPatient from '@views/Patient/AddPatient';
 import EditPatient from '@views/Patient/EditPatient';
+import MasterSetting from '@views/Settings/MasterSettings';
+import SettingInfo from '@views/Settings/MasterSettings/SettingInfo';
+import TestSetting from '@views/Settings/MasterSettings/TestSetting';
+import TestSetting2 from '@views/Settings/MasterSettings/TestSetting2';
 
 const PrivateRoutes = {
     path: '/',
@@ -56,6 +60,36 @@ const PrivateRoutes = {
                 return true;
             },
             errorElement: <div>Error</div>,
+        },
+        {
+            path: 'settings/master',
+            element: <MasterSetting />,
+            children: [
+                {
+                    path: '',
+                    element: <SettingInfo />,
+                    loader: () => {
+                        return true;
+                    },
+                    errorElement: <div>Error</div>,
+                },
+                {
+                    path: 'test',
+                    element: <TestSetting />,
+                    loader: () => {
+                        return true;
+                    },
+                    errorElement: <div>Error</div>,
+                },
+                {
+                    path: 'test2',
+                    element: <TestSetting2 />,
+                    loader: () => {
+                        return true;
+                    },
+                    errorElement: <div>Error</div>,
+                },
+            ],
         },
         {
             path: 'settings/system',

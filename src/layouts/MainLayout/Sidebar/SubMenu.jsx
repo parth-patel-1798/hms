@@ -56,7 +56,6 @@ const SubMenu = ({ activeSubmenu, item, i, locationName }) => {
                         {!menu.child ? (
                             <NavLink
                                 to={menu.link}
-                                // className={`w-full cursor-pointer inline-flex gap-2 items-center rounded-lg font-normal hover:text-cyan-800 hover:font-medium`}
                                 onClick={() => {
                                     toggleMultiMenu(j);
                                     toggleMenu();

@@ -6,11 +6,11 @@ const MenuItems = [
         link: 'dashboard',
         icon: <LayoutDashboard strokeWidth={1.5} />,
     },
-    {
-        title: 'Patients',
-        link: 'patients',
-        icon: <Users strokeWidth={1.5} />,
-    },
+    // {
+    //     title: 'Patients',
+    //     link: 'patients',
+    //     icon: <Users strokeWidth={1.5} />,
+    // },
     {
         title: 'Settings',
         icon: <Settings strokeWidth={1.5} />,
@@ -18,6 +18,10 @@ const MenuItems = [
             {
                 title: 'General Settings',
                 link: 'settings/general',
+            },
+            {
+                title: 'Master Settings',
+                link: 'settings/master',
             },
             {
                 title: 'System Settings',
