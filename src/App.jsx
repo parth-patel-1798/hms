@@ -5,17 +5,20 @@ import { persister, store } from './store';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import AppRoutes from './routes';
 import { Toaster } from 'react-hot-toast';
+import useScreenSize from '@hooks/useScreenSize';
 
 // const AppRoutes = React.lazy(() => import('./routes'));
 
 function App() {
     const queryClient = useMemo(() => new QueryClient(), []);
+    const { isMobile } = useScreenSize();
+
     return (
         <Provider store={store}>
             <PersistGate loading={null} persistor={persister}>
                 <QueryClientProvider client={queryClient}>
                     <AppRoutes />
-                    <Toaster position="top-right" containerClassName="text-sm" />
+                    <Toaster position={isMobile ? 'bottom-center' : 'top-right'} containerClassName="text-sm" />
                 </QueryClientProvider>
             </PersistGate>
         </Provider>
