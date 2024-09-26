@@ -1,16 +1,17 @@
-import React from 'react';
-import MasterMenus from './MasterMenus';
-import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import Typography from '@components/Typography';
+import React from 'react';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import SimpleBar from 'simplebar-react';
+import 'simplebar-react/dist/simplebar.min.css';
+import MasterMenus from './MasterMenus';
 
-const MasterSettings = () => {
+const MasterSetting = () => {
     const location = useLocation();
     const isMasterRoute = location.pathname === '/settings/master';
 
     return (
-        <div className="flex flex-col h-full gap-2">
-            {/* Breadcrumbs */}
-            <div className="inline-flex gap-2">
+        <div className="h-full flex flex-col gap-2">
+            <div className="flex gap-2">
                 <div>
                     <label className="flex items-center gap-2">
                         <span className="font-semibold">Master Settings</span>
@@ -19,10 +20,10 @@ const MasterSettings = () => {
                 </div>
             </div>
 
-            {/* Main Content */}
-            <div className="flex-1 flex gap-2 w-full">
+            <section className="flex-1 flex gap-2 overflow-hidden">
+                {/* Master Menu */}
                 <div className={`${isMasterRoute ? 'block w-full' : 'hidden lg:block'} lg:w-[240px]`}>
-                    <div className="bg-white rounded-md px-2">
+                    <SimpleBar style={{ maxHeight: '100%' }}>
                         <div className="grid grid-cols-1 gap-2 p-2 bg-white rounded-md">
                             {MasterMenus.map((menu, i) => {
                                 const Icon = menu.icon;
@@ -42,16 +43,20 @@ const MasterSettings = () => {
                                 );
                             })}
                         </div>
+                    </SimpleBar>
+                </div>
+
+                {/* Outlet for other pages */}
+                <div className={`${isMasterRoute ? 'hidden md:block ' : ''} flex-1`}>
+                    <div className="bg-white rounded-md p-2">
+                        {/* <SimpleBar style={{ maxHeight: '100%' }}> */}
+                        <Outlet />
+                        {/* </SimpleBar> */}
                     </div>
                 </div>
-                <main className={`flex-1  ${isMasterRoute ? 'hidden ' : 'flex flex-col'} `}>
-                    <div className="bg-white rounded-md p-2">
-                        <Outlet />
-                    </div>
-                </main>
-            </div>
+            </section>
         </div>
     );
 };
 
-export default MasterSettings;
+export default MasterSetting;

@@ -4,30 +4,44 @@ import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import { useSelector } from 'react-redux';
+import SimpleBar from 'simplebar-react';
+import 'simplebar-react/dist/simplebar.min.css';
 
 const MainLayout = () => {
     const location = useLocation();
-    const authData = useSelector((state) => state.auth);
     const navigate = useNavigate();
 
+    // Get authData and determine if the user is authenticated
+    const { isAuthenticated } = useSelector((state) => state.auth);
+
+    // Redirect to login if the user is not authenticated
     useEffect(() => {
-        if (!authData.isAuthenticated) {
+        if (!isAuthenticated) {
             navigate('/auth/login', { replace: true });
         }
-    }, [location, authData]);
+    }, [isAuthenticated, navigate]);
 
-    if (!authData.isAuthenticated) return null;
+    // If not authenticated, return null to prevent rendering the layout
+    if (!isAuthenticated) return null;
 
     return (
         <div className="relative h-dvh bg-slate-100 flex">
             <MenuProvider>
+                {/* Sidebar */}
                 <Sidebar />
+
+                {/* Main Content Area */}
                 <main className="flex-1 flex flex-col z-10 overflow-hidden">
+                    {/* Header */}
                     <Header />
-                    <div className="flex-1 flex overflow-auto">
-                        <div className="flex-1 p-2">
-                            <Outlet />
-                        </div>
+
+                    {/* Main Content Section with SimpleBar for scroll management */}
+                    <div className="flex-1 overflow-auto">
+                        <SimpleBar style={{ height: '100%' }}>
+                            <div className="p-2">
+                                <Outlet />
+                            </div>
+                        </SimpleBar>
                     </div>
                 </main>
             </MenuProvider>

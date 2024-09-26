@@ -1,0 +1,202 @@
+[
+    {
+        "id": 1,
+        "name": "Dr. John Smith",
+        "specialty": "Cardiology",
+        "hospital": "Cleveland Clinic",
+        "address": {
+            "street": "9500 Euclid Ave",
+            "city": "Cleveland",
+            "state": "OH",
+            "zip": "44195"
+        },
+        "phone": "+1-216-444-2200",
+        "email": "john.smith@clevelandclinic.org",
+        "license_number": "OH123456",
+        "years_of_experience": 15,
+        "availability": {
+            "days": ["Monday", "Wednesday", "Friday"],
+            "hours": "09:00 AM - 05:00 PM"
+        }
+    },
+    {
+        "id": 2,
+        "name": "Dr. Emily Johnson",
+        "specialty": "Pediatrics",
+        "hospital": "Mayo Clinic",
+        "address": {
+            "street": "200 1st St SW",
+            "city": "Rochester",
+            "state": "MN",
+            "zip": "55905"
+        },
+        "phone": "+1-507-284-2511",
+        "email": "emily.johnson@mayoclinic.org",
+        "license_number": "MN7891011",
+        "years_of_experience": 10,
+        "availability": {
+            "days": ["Tuesday", "Thursday"],
+            "hours": "10:00 AM - 04:00 PM"
+        }
+    },
+    {
+        "id": 3,
+        "name": "Dr. Robert Williams",
+        "specialty": "Dermatology",
+        "hospital": "Johns Hopkins Hospital",
+        "address": {
+            "street": "1800 Orleans St",
+            "city": "Baltimore",
+            "state": "MD",
+            "zip": "21287"
+        },
+        "phone": "+1-410-955-5000",
+        "email": "robert.williams@jhmi.edu",
+        "license_number": "MD11223344",
+        "years_of_experience": 20,
+        "availability": {
+            "days": ["Monday", "Wednesday", "Friday"],
+            "hours": "08:00 AM - 03:00 PM"
+        }
+    },
+    {
+        "id": 4,
+        "name": "Dr. Sarah Lee",
+        "specialty": "Neurology",
+        "hospital": "Massachusetts General Hospital",
+        "address": {
+            "street": "55 Fruit St",
+            "city": "Boston",
+            "state": "MA",
+            "zip": "02114"
+        },
+        "phone": "+1-617-726-2000",
+        "email": "sarah.lee@mgh.harvard.edu",
+        "license_number": "MA987654",
+        "years_of_experience": 12,
+        "availability": {
+            "days": ["Monday", "Thursday"],
+            "hours": "09:00 AM - 04:00 PM"
+        }
+    },
+    {
+        "id": 5,
+        "name": "Dr. Michael Brown",
+        "specialty": "Orthopedics",
+        "hospital": "Hospital for Special Surgery",
+        "address": {
+            "street": "535 E 70th St",
+            "city": "New York",
+            "state": "NY",
+            "zip": "10021"
+        },
+        "phone": "+1-212-606-1000",
+        "email": "michael.brown@hss.edu",
+        "license_number": "NY334455",
+        "years_of_experience": 18,
+        "availability": {
+            "days": ["Wednesday", "Friday"],
+            "hours": "08:00 AM - 02:00 PM"
+        }
+    },
+    {
+        "id": 6,
+        "name": "Dr. Lisa Miller",
+        "specialty": "Endocrinology",
+        "hospital": "Cedars-Sinai Medical Center",
+        "address": {
+            "street": "8700 Beverly Blvd",
+            "city": "Los Angeles",
+            "state": "CA",
+            "zip": "90048"
+        },
+        "phone": "+1-310-423-3277",
+        "email": "lisa.miller@csmc.edu",
+        "license_number": "CA445566",
+        "years_of_experience": 14,
+        "availability": {
+            "days": ["Tuesday", "Thursday"],
+            "hours": "10:00 AM - 05:00 PM"
+        }
+    },
+    {
+        "id": 7,
+        "name": "Dr. David Thompson",
+        "specialty": "Ophthalmology",
+        "hospital": "Wills Eye Hospital",
+        "address": {
+            "street": "840 Walnut St",
+            "city": "Philadelphia",
+            "state": "PA",
+            "zip": "19107"
+        },
+        "phone": "+1-215-928-3000",
+        "email": "david.thompson@willseye.org",
+        "license_number": "PA556677",
+        "years_of_experience": 22,
+        "availability": {
+            "days": ["Monday", "Friday"],
+            "hours": "09:00 AM - 01:00 PM"
+        }
+    },
+    {
+        "id": 8,
+        "name": "Dr. Karen Davis",
+        "specialty": "Gastroenterology",
+        "hospital": "UCLA Medical Center",
+        "address": {
+            "street": "757 Westwood Plaza",
+            "city": "Los Angeles",
+            "state": "CA",
+            "zip": "90095"
+        },
+        "phone": "+1-310-825-9111",
+        "email": "karen.davis@mednet.ucla.edu",
+        "license_number": "CA667788",
+        "years_of_experience": 17,
+        "availability": {
+            "days": ["Wednesday", "Thursday"],
+            "hours": "09:00 AM - 04:00 PM"
+        }
+    },
+    {
+        "id": 9,
+        "name": "Dr. Daniel Harris",
+        "specialty": "Oncology",
+        "hospital": "MD Anderson Cancer Center",
+        "address": {
+            "street": "1515 Holcombe Blvd",
+            "city": "Houston",
+            "state": "TX",
+            "zip": "77030"
+        },
+        "phone": "+1-713-792-2121",
+        "email": "daniel.harris@mdanderson.org",
+        "license_number": "TX778899",
+        "years_of_experience": 19,
+        "availability": {
+            "days": ["Monday", "Wednesday"],
+            "hours": "08:30 AM - 04:30 PM"
+        }
+    },
+    {
+        "id": 10,
+        "name": "Dr. Jennifer Moore",
+        "specialty": "Psychiatry",
+        "hospital": "NewYork-Presbyterian Hospital",
+        "address": {
+            "street": "525 E 68th St",
+            "city": "New York",
+            "state": "NY",
+            "zip": "10065"
+        },
+        "phone": "+1-212-746-5454",
+        "email": "jennifer.moore@nyp.org",
+        "license_number": "NY998877",
+        "years_of_experience": 13,
+        "availability": {
+            "days": ["Tuesday", "Friday"],
+            "hours": "09:00 AM - 03:00 PM"
+        }
+    }
+]

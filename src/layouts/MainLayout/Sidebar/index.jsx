@@ -55,15 +55,15 @@ const Sidebar = () => {
 
     return (
         <>
-            <aside
+            <div
                 className={`sidebar 
                     ${isOpen ? 'w-64' : 'w-0 md:w-[56px] md:hover:w-64'} 
-                    ${isMobile ? 'absolute top-0 left-0' : 'relative'}
+                    ${isMobile ? 'absolute top-0 left-0 z-40' : 'relative z-0'}
                 `}
             >
                 <nav className={`truncate md:whitespace-normal flex-1 flex flex-col`}>
                     {/* head */}
-                    {/* <div className="p-2">
+                    <div className="p-2">
                         <div className={`sidebar-title px-2 pt-1`}>
                             <img src={CompanyLogo} className="h-10" alt="Company Logo" />
                             <div className={`logo-text truncate relative inline-block`}>
@@ -71,7 +71,7 @@ const Sidebar = () => {
                                 <small className="block text-xs text-slate-500 font-medium">Management System</small>
                             </div>
                         </div>
-                    </div> */}
+                    </div>
 
                     {/* Menu */}
                     <div className="sidebar-menu overflow-auto p-2">
@@ -140,10 +140,10 @@ const Sidebar = () => {
                         </ul>
                     </div>
                 </nav>
-            </aside>
+            </div>
             <div
                 className={`fixed inset-0 bg-black ${
-                    isOpen ? 'bg-opacity-10 z-30' : 'bg-opacity-0 z-0'
+                    isOpen ? 'bg-opacity-50 z-30' : 'bg-opacity-0 z-0'
                 } transition-all duration-300 md:hidden`}
                 onClick={() => setIsOpen(false)}
             />

@@ -46,7 +46,7 @@ const SubMenu = ({ activeSubmenu, item, i, locationName }) => {
 
         const activeIndex = findActiveSubmenu(item, locationName);
         setMultiMenu(activeIndex);
-    }, [location]);
+    }, [locationName]);
 
     return (
         <Collapse isOpened={activeSubmenu === i}>

@@ -6,8 +6,11 @@ import AddPatient from '@views/Patient/AddPatient';
 import EditPatient from '@views/Patient/EditPatient';
 import MasterSetting from '@views/Settings/MasterSettings';
 import SettingInfo from '@views/Settings/MasterSettings/SettingInfo';
-import TestSetting from '@views/Settings/MasterSettings/TestSetting';
-import TestSetting2 from '@views/Settings/MasterSettings/TestSetting2';
+import Diagnosis from '@views/Settings/MasterSettings/Diagnosis';
+import Diseases from '@views/Settings/MasterSettings/Diseases';
+import InsuranceCompanies from '@views/Settings/MasterSettings/InsuranceCompanies';
+import Doctors from '@views/Doctors';
+import Roles from '@views/Settings/RolePermission/Roles';
 
 const PrivateRoutes = {
     path: '/',
@@ -16,51 +19,43 @@ const PrivateRoutes = {
         {
             path: 'profile',
             element: <div>Profile</div>,
-            loader: () => {
-                return true;
-            },
+
             errorElement: <div>Error </div>,
         },
         {
             path: 'dashboard',
             element: <Dashboard />,
-            loader: () => {
-                return true;
-            },
-            // errorElement: <div>Error</div>,
         },
         {
             path: 'patients',
             element: <Patient />,
-            loader: () => {
-                return true;
-            },
-            errorElement: <div>Error</div>,
+        },
+        {
+            path: 'doctors',
+            children: [
+                {
+                    path: '',
+                    element: <Doctors />,
+                },
+                {
+                    path: 'create',
+                    element: <Doctors />,
+                },
+                {
+                    path: 'edit/:id',
+                    element: <Doctors />,
+                },
+            ],
         },
         {
             path: 'patients/create',
             element: <AddPatient />,
-            loader: () => {
-                return true;
-            },
-            errorElement: <div>Error</div>,
         },
         {
             path: 'patients/edit/:id',
             element: <EditPatient />,
-            loader: () => {
-                return true;
-            },
-            errorElement: <div>Error</div>,
         },
-        {
-            path: 'settings/general',
-            element: <div>general</div>,
-            loader: () => {
-                return true;
-            },
-            errorElement: <div>Error</div>,
-        },
+
         {
             path: 'settings/master',
             element: <MasterSetting />,
@@ -68,36 +63,33 @@ const PrivateRoutes = {
                 {
                     path: '',
                     element: <SettingInfo />,
-                    loader: () => {
-                        return true;
-                    },
-                    errorElement: <div>Error</div>,
                 },
                 {
-                    path: 'test',
-                    element: <TestSetting />,
-                    loader: () => {
-                        return true;
-                    },
-                    errorElement: <div>Error</div>,
+                    path: 'insurance-companies',
+                    element: <InsuranceCompanies />,
                 },
                 {
-                    path: 'test2',
-                    element: <TestSetting2 />,
-                    loader: () => {
-                        return true;
-                    },
-                    errorElement: <div>Error</div>,
+                    path: 'diagnosis',
+                    element: <Diagnosis />,
+                },
+                {
+                    path: 'diseases',
+                    element: <Diseases />,
                 },
             ],
         },
         {
-            path: 'settings/system',
-            element: <div>system</div>,
-            loader: () => {
-                return true;
-            },
-            errorElement: <div>Error</div>,
+            path: 'settings/role-permission',
+            children: [
+                {
+                    path: 'roles',
+                    element: <Roles />,
+                },
+                {
+                    path: 'permissions',
+                    element: <div>Permissions</div>,
+                },
+            ],
         },
     ],
 };

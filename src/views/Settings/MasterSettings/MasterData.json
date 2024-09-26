@@ -1,0 +1,112 @@
+{
+    "insuranceCompanies": [
+        {
+            "id": 1,
+            "name": "Health First Insurance",
+            "code": "HFI123",
+            "status": true,
+            "contact": {
+                "phone": "123-456-7890",
+                "email": "info@healthfirst.com",
+                "address": "123 Health St, Wellness City, CA"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Secure Life Insurance",
+            "code": "SLI456",
+            "status": false,
+            "contact": {
+                "phone": "987-654-3210",
+                "email": "support@securelife.com",
+                "address": "456 Safe Ave, Protect Town, NY"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Global Coverage",
+            "code": "GC789",
+            "status": true,
+            "contact": {
+                "phone": "555-123-4567",
+                "email": "contact@globalcoverage.com",
+                "address": "789 Global Rd, Assurance City, TX"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Family Shield Insurance",
+            "code": "FSI321",
+            "status": true,
+            "contact": {
+                "phone": "321-654-0987",
+                "email": "info@familyshield.com",
+                "address": "321 Family Blvd, Care City, FL"
+            }
+        },
+        {
+            "id": 5,
+            "name": "Safe Haven Insurance",
+            "code": "SHI654",
+            "status": false,
+            "contact": {
+                "phone": "111-222-3333",
+                "email": "hello@safehaven.com",
+                "address": "654 Haven Dr, Shelter Town, WA"
+            }
+        }
+    ],
+    "diagnosis": [
+        { "name": "Asthma", "code": "21dfdf", "status": true },
+        { "name": "Diabetes", "code": "32jdfk", "status": true },
+        { "name": "Hypertension", "code": "21kdi4", "status": false },
+        { "name": "Bronchitis", "code": "43skjd", "status": true },
+        { "name": "Pneumonia", "code": "29sjdh", "status": true },
+        { "name": "Anxiety", "code": "65dfkd", "status": false },
+        { "name": "Depression", "code": "56fjkd", "status": true },
+        { "name": "Migraine", "code": "78djhf", "status": true },
+        { "name": "COVID-19", "code": "19covid", "status": false },
+        { "name": "Heart Disease", "code": "89hdfg", "status": true },
+        { "name": "Stroke", "code": "67sdrf", "status": false },
+        { "name": "Cancer", "code": "93fkdg", "status": true },
+        { "name": "Tuberculosis", "code": "24dfkg", "status": true },
+        { "name": "Arthritis", "code": "54gdfg", "status": false },
+        { "name": "Osteoporosis", "code": "75hgdf", "status": true },
+        { "name": "Obesity", "code": "62gfhg", "status": false },
+        { "name": "Chronic Kidney Disease", "code": "31fdkg", "status": true },
+        { "name": "Alzheimer's", "code": "27dhjg", "status": true },
+        { "name": "Parkinson's Disease", "code": "58gdfh", "status": true },
+        { "name": "Epilepsy", "code": "66sdfh", "status": false },
+        { "name": "Multiple Sclerosis", "code": "48gjhf", "status": true },
+        { "name": "Liver Disease", "code": "37dhjf", "status": false },
+        { "name": "Cirrhosis", "code": "29dkjg", "status": true },
+        { "name": "Peptic Ulcer", "code": "45hdfj", "status": true },
+        { "name": "Gastritis", "code": "33hfdg", "status": false },
+        { "name": "Astigmatism", "code": "71dfkg", "status": true },
+        { "name": "Cataracts", "code": "84dghj", "status": true },
+        { "name": "Glaucoma", "code": "91sdfh", "status": false },
+        { "name": "Conjunctivitis", "code": "19hfdg", "status": true },
+        { "name": "Sinusitis", "code": "28fdjk", "status": true },
+        { "name": "Tonsillitis", "code": "34skdj", "status": false },
+        { "name": "Otitis Media", "code": "53sdfg", "status": true },
+        { "name": "Vertigo", "code": "76ghjd", "status": true },
+        { "name": "Rheumatoid Arthritis", "code": "89fdgh", "status": true },
+        { "name": "Scoliosis", "code": "98fdjh", "status": false },
+        { "name": "Sciatica", "code": "41dfgj", "status": true },
+        { "name": "Eczema", "code": "55dsfg", "status": false },
+        { "name": "Psoriasis", "code": "64fgjh", "status": true },
+        { "name": "Vitiligo", "code": "83fgjd", "status": false },
+        { "name": "HIV", "code": "11hfgj", "status": true },
+        { "name": "AIDS", "code": "22skjd", "status": false },
+        { "name": "Malaria", "code": "33sdfg", "status": true },
+        { "name": "Dengue", "code": "44dhfg", "status": false },
+        { "name": "Zika Virus", "code": "65dfgh", "status": true },
+        { "name": "Rabies", "code": "76dhgf", "status": false },
+        { "name": "Leprosy", "code": "87dghj", "status": true },
+        { "name": "Cholera", "code": "98dsfg", "status": true },
+        { "name": "Influenza", "code": "14sdfg", "status": false },
+        { "name": "Measles", "code": "25gdfj", "status": true },
+        { "name": "Mumps", "code": "36hfdj", "status": true },
+        { "name": "Rubella", "code": "47dfgh", "status": true }
+    ]
+}

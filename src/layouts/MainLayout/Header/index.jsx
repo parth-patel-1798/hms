@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useMenu from '@hooks/useMenu';
 import ProfilePicture from '@assets/images/ProfilePicture.webp';
 import { FiMenu } from 'react-icons/fi';
@@ -16,24 +16,9 @@ const Header = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const [menuOpen, setMenuOpen] = useState(false);
-
-    const handleButtonClick = (event, row) => {
-        const buttonRect = event.target.getBoundingClientRect();
-        console.log(buttonRect);
-        setMenuPosition({ x: buttonRect.left, y: buttonRect.bottom });
-        // setSelectedRow(row);
-        setMenuOpen(true);
-    };
-
-    const closeMenu = () => {
-        setMenuOpen(false);
-    };
-
-    const { mutate, isPending } = useMutation({
+    const { mutate } = useMutation({
         mutationFn: () => LogoutAPI(),
-        onSuccess: (response) => {
-            const { data } = response;
+        onSuccess: () => {
             dispatch(logout());
             navigate('/auth/login', { replace: true });
         },
@@ -51,12 +36,7 @@ const Header = () => {
             </div>
 
             <section className="flex gap-3 items-center py-1 px-2">
-                <Settings
-                    strokeWidth={1.5}
-                    size="20"
-                    className="text-slate-900 cursor-pointer"
-                    onClick={(event) => handleButtonClick(event)}
-                />
+                <Settings strokeWidth={1.5} size="20" className="text-slate-900 cursor-pointer" />
                 {/* Notificatoin Secton */}
                 <Menu trigger={<Bell size={'20'} strokeWidth={1.5} className="text-slate-900 cursor-pointer" />}>
                     <MenuItem>demo</MenuItem>
