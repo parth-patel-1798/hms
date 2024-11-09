@@ -1,0 +1,102 @@
+[
+    {
+        "name": "Saint Mary’s Medical Center",
+        "address": "123 Health St, San Francisco, CA 94110",
+        "status": true
+    },
+    {
+        "name": "City General Hospital",
+        "address": "456 Oak Ave, New York, NY 10001",
+        "status": true
+    },
+    {
+        "name": "Green Valley Hospital",
+        "address": "789 Pine Lane, Austin, TX 73301",
+        "status": true
+    },
+    {
+        "name": "Sunrise Health Clinic",
+        "address": "321 Maple Blvd, Seattle, WA 98101",
+        "status": true
+    },
+    {
+        "name": "Central Care Hospital",
+        "address": "567 Birch Road, Miami, FL 33101",
+        "status": true
+    },
+    {
+        "name": "Westside Regional Hospital",
+        "address": "890 Elm St, Denver, CO 80201",
+        "status": true
+    },
+    {
+        "name": "Bluewater General Hospital",
+        "address": "234 Willow Dr, Chicago, IL 60601",
+        "status": true
+    },
+    {
+        "name": "Sunnybrook Medical Center",
+        "address": "678 Cedar Ave, Los Angeles, CA 90001",
+        "status": true
+    },
+    {
+        "name": "Oceanview Hospital",
+        "address": "910 Bay Blvd, San Diego, CA 92101",
+        "status": true
+    },
+    {
+        "name": "Grand River Health",
+        "address": "345 Hilltop Ln, Phoenix, AZ 85001",
+        "status": true
+    },
+    {
+        "name": "Lakeshore Medical Facility",
+        "address": "789 Horizon Dr, Minneapolis, MN 55401",
+        "status": true
+    },
+    {
+        "name": "Riverside General",
+        "address": "654 Forest Rd, Portland, OR 97201",
+        "status": true
+    },
+    {
+        "name": "Mountainview Medical Center",
+        "address": "123 Canyon Way, Salt Lake City, UT 84101",
+        "status": true
+    },
+    {
+        "name": "Harborview Hospital",
+        "address": "890 Coastal Dr, Baltimore, MD 21201",
+        "status": true
+    },
+    {
+        "name": "Eastside Community Hospital",
+        "address": "456 Meadow Rd, Boston, MA 02101",
+        "status": true
+    },
+    {
+        "name": "Redwood Health Center",
+        "address": "678 Sunset Blvd, San Francisco, CA 94101",
+        "status": true
+    },
+    {
+        "name": "Crescent City Medical",
+        "address": "910 Beacon Ave, New Orleans, LA 70101",
+        "status": true
+    },
+    {
+        "name": "Highland Park Hospital",
+        "address": "234 Summit St, Dallas, TX 75201",
+        "status": true
+    },
+    {
+        "name": "Bayside Medical",
+        "address": "567 Harbor St, Tampa, FL 33601",
+        "status": true
+    },
+    {
+        "name": "Silver Oaks Medical Center",
+        "address": "345 Evergreen Ln, Charlotte, NC 28201",
+        "status": true
+    }
+]

@@ -78,7 +78,10 @@ const Login = () => {
             </form>
 
             <span className="text-sm text-center">
-                You don't have account ? <NavLink className="text-indigo-800">Sign Up</NavLink>
+                You don't have account ?{' '}
+                <NavLink to={'/auth/registration'} className="text-indigo-800">
+                    Sign Up
+                </NavLink>
             </span>
         </div>
     );

@@ -3,4 +3,6 @@ export const LogoutURL = '/auth/logout';
 export const ForgotPasswordURL = '/auth/forgot-password';
 
 // Role
-export const RoleListURL = '/role'
+export const RoleURL = '/role';
+export const RoleListURL = '/role/list';
+export const RolePermissionsURL = '/permission/list';

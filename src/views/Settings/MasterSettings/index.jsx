@@ -34,7 +34,7 @@ const MasterSettings = () => {
                                             `py-1 inline-flex items-center gap-2 ${isActive ? 'text-cyan-800 font-semibold' : 'hover:text-cyan-800 hover:font-normal'}`
                                         }
                                     >
-                                        <Icon className="text-2xl" />
+                                        <Icon className="text-2xl" strokeWidth={1.5}/>
                                         <Typography variant="body2" className="truncate">
                                             {menu.title}
                                         </Typography>

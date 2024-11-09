@@ -19,6 +19,7 @@ const AddPatient = () => {
         resolver: yupResolver(schema),
     });
 
+
     const onSubmit = (data) => {
         console.log(data);
     };

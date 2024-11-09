@@ -1,6 +1,7 @@
 import AuthLayout from '@layouts/AuthLayout';
 import ForgotPassword from '@views/Authentication/ForgotPassword';
 import Login from '@views/Authentication/Login';
+import Registration from '@views/Authentication/Registration';
 
 const PublicRoutes = {
     path: '/auth',
@@ -9,6 +10,14 @@ const PublicRoutes = {
         {
             path: 'login',
             element: <Login />,
+            loader: () => {
+                return true;
+            },
+            errorElement: <div>Error</div>,
+        },
+        {
+            path: 'registration',
+            element: <Registration />,
             loader: () => {
                 return true;
             },

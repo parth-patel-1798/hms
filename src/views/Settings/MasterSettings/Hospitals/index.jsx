@@ -1,17 +1,18 @@
 import Typography from '@components/Typography';
-import React from 'react';
+import React, { useState } from 'react';
 import { FaArrowLeft } from 'react-icons/fa6';
-import { FiEdit, FiFilter, FiPlusCircle } from 'react-icons/fi';
+import { FiFilter } from 'react-icons/fi';
 import { MdAddCircle, MdOutlineChevronLeft, MdOutlineChevronRight } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
-import MasterData from './MasterData.json';
 import SimpleBar from 'simplebar-react';
+
+import JsonData from './HospitalData.json';
 import { GrEdit } from 'react-icons/gr';
 import { RiDeleteBinLine } from 'react-icons/ri';
 
-const Diagnosis = () => {
+const Hospitals = () => {
     const navigate = useNavigate();
-
+    const [openAddModel, setOpenAddModel] = useState(false);
     return (
         <div className="grid grid-cols-1 gap-2">
             <div className="flex flex-col sm:flex-row gap-2 items-center pt-1">
@@ -23,9 +24,12 @@ const Diagnosis = () => {
                         <FaArrowLeft className="text-sm" />
                     </button>
                     <Typography variant="body1" className="font-medium truncate">
-                        Diagnosis
+                        Hospitals & clinics
                     </Typography>
-                    <button className="text-cyan-800 px-3 py-0.5 font-medium inline-flex gap-1 items-center">
+                    <button
+                        className="text-cyan-800 px-3 py-0.5 font-medium inline-flex gap-1 items-center"
+                        onClick={() => setOpenAddModel(true)}
+                    >
                         <MdAddCircle /> <Typography variant="body2">Add</Typography>
                     </button>
                 </div>
@@ -42,26 +46,25 @@ const Diagnosis = () => {
                 </div>
             </div>
             <hr />
-
             <div className="overflow-auto">
                 <SimpleBar style={{ maxHeight: '100%' }}>
                     <table className="min-w-full md:max-w-full">
                         <thead className="text-sm font-normal bg-gray-200">
                             <tr className="text-left">
                                 <th className="p-2 font-semibold">Name</th>
-                                <th className="p-2 font-semibold">Code</th>
+                                <th className="p-2 font-semibold">Address</th>
                                 <th className="p-2 font-semibold text-center">Status</th>
                                 <th className="p-2 font-semibold text-right">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {MasterData.diagnosis.map((item, idx) => (
-                                <tr key={idx} className="">
+                            {JsonData.map((item, idx) => (
+                                <tr key={idx}>
                                     <td className="p-2">
                                         <Typography variant="body2">{item.name}</Typography>
                                     </td>
                                     <td className="p-2">
-                                        <Typography variant="body2">{item.code}</Typography>
+                                        <Typography variant="body2">{item.address}</Typography>
                                     </td>
                                     <td className="p-2 text-center">
                                         <Typography
@@ -111,4 +114,4 @@ const Diagnosis = () => {
     );
 };
 
-export default Diagnosis;
+export default Hospitals;

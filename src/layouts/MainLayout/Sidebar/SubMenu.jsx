@@ -1,6 +1,6 @@
+import React, { useEffect, useState } from 'react';
 import useMenu from '@hooks/useMenu';
 import { ChevronDown } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
 import { Collapse } from 'react-collapse';
 import { NavLink } from 'react-router-dom';
 
@@ -87,9 +87,17 @@ const SubMenu = ({ activeSubmenu, item, i, locationName }) => {
                                         </div>
                                     )}
                                     <div className="truncate flex-1 flex justify-between items-center">
-                                        <span className="truncate text-sm font-medium">{menu.title}</span>
+                                        <span
+                                            className={`truncate text-sm font-medium ${activeMultiMenu === j ? 'text-cyan-800 font-semibold' : ''}`}
+                                        >
+                                            {menu.title}
+                                        </span>
                                         <span className={`truncate ${activeMultiMenu === j ? 'rotate-90' : ''}`}>
-                                            <ChevronDown strokeWidth={1.5} size={'18px'} />
+                                            <ChevronDown
+                                                strokeWidth={1.5}
+                                                size={'18px'}
+                                                className={`${activeMultiMenu === j ? 'text-cyan-800' : ''}`}
+                                            />
                                         </span>
                                     </div>
                                 </div>
