@@ -24,6 +24,7 @@ const RolePage = Loadable(lazy(() => import('@views/Settings/RolePermission/Role
 
 // MasterSettings
 const HospitalsPage = Loadable(lazy(() => import('@views/Settings/MasterSettings/Hospitals')));
+const DevicePage = Loadable(lazy(() => import('@views/Settings/MasterSettings/Device')));
 
 const checkPermission = () => {
     const hasPermission = true;
@@ -138,6 +139,10 @@ const PrivateRoutes = {
                 {
                     path: 'diseases',
                     element: <Diseases />,
+                },
+                {
+                    path: 'devices',
+                    element: <DevicePage />,
                 },
             ],
         },

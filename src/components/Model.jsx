@@ -6,12 +6,12 @@ const Model = ({ open, onClose, title, children }) => {
     return (
         <>
             <div
-                className="fixed inset-0 bg-black bg-opacity-50 z-30 transition-all duration-300"
+                className="fixed inset-0 bg-black bg-opacity-50 z-30 transition-all duration-300 overflow-auto flex justify-center items-center"
                 onClick={() => {
                     if (onClose) onClose();
                 }}
             >
-                <div className="absolute inset-0 flex items-center justify-center z-40 p-2">
+                <div className="absolute flex items-center justify-center z-40 p-2 gap-2">
                     <div className="bg-white rounded-lg shadow-lg" onClick={(e) => e.stopPropagation()}>
                         {/* Title */}
                         <div className="p-2">{title || 'Model Title'}</div>

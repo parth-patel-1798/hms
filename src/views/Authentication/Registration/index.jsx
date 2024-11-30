@@ -51,7 +51,7 @@ const Registration = () => {
     const lastStep = steps.length - 1;
     return (
         <form className="flex flex-col gap-10 ">
-            <p className="text-center">Registration</p>
+            {/* <p className="text-center">Registration</p> */}
             <div className="grid gap-5">
                 <p className="text-center">{steps[currentStep].title}</p>
                 <div>{steps[currentStep].element}</div>

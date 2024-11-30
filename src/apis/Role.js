@@ -21,6 +21,7 @@ export async function RoleListAPI() {
         throw new Error('Failed to fetch roles. Please try again later.');
     }
 }
+
 export async function RolePermissionListAPI() {
     try {
         const response = await AxiosServices.get(RolePermissionsURL);

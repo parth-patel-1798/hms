@@ -22,6 +22,11 @@ const MasterMenus = [
         link: 'diseases',
         icon: TbReportMedical,
     },
+    {
+        title: 'Devices',
+        link: 'devices',
+        icon: TbReportMedical,
+    },
 ];
 
 export default MasterMenus;

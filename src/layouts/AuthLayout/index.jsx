@@ -15,9 +15,9 @@ const AuthLayout = () => {
     }, [location, authData]);
 
     return (
-        <div className="h-dvh bg-slate-100 flex items-center justify-center p-3">
-            <div className=" bg-white p-5 w-96 rounded-lg">
-                <NavLink to={'/dashboard'} className={`sidebar-title justify-center px-2 pt-1 pb-5`}>
+        <div className="min-h-screen bg-slate-100 flex items-center justify-center p-3">
+            <div className="bg-white p-5 w-full sm:w-96 rounded-lg">
+                <NavLink to={'/dashboard'} className="sidebar-title justify-center px-2 pt-1 pb-5">
                     <img src={CompanyLogo} className="h-14" alt="Company Logo" />
                 </NavLink>
 

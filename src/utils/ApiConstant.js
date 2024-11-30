@@ -6,3 +6,6 @@ export const ForgotPasswordURL = '/auth/forgot-password';
 export const RoleURL = '/role';
 export const RoleListURL = '/role/list';
 export const RolePermissionsURL = '/permission/list';
+
+// Hospital
+export const HospitalURL = '/hospital';
