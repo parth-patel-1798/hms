@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Typography from '@components/Typography';
-import TextFiled from '@components/TextFiled';
+import TextFiled from '@components/TextField';
 import { useForm } from 'react-hook-form';
 
 import * as yup from 'yup';

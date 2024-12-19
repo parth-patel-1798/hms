@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { NavLink } from 'react-router-dom';
-import TextFiled from '@components/TextFiled';
+import TextFiled from '@components/TextField';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useMutation } from '@tanstack/react-query';

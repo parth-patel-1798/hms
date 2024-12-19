@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useMutation } from '@tanstack/react-query';
 import Typography from '@components/Typography';
-import TextFiled from '@components/TextFiled';
+import TextFiled from '@components/TextField';
 import Select from '@components/Select';
 import Button from '@components/Button';
 

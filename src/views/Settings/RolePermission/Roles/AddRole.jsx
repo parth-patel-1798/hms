@@ -2,7 +2,7 @@ import React from 'react';
 import { RolePermissionListAPI } from '@apis/Role';
 import { useQuery } from '@tanstack/react-query';
 import Typography from '@components/Typography';
-import TextFiled from '@components/TextFiled';
+import TextFiled from '@components/TextField';
 
 const AddRole = () => {
     const { data, isLoading } = useQuery({ queryKey: ['role-permissions'], queryFn: RolePermissionListAPI });

@@ -1,5 +1,5 @@
 import React from 'react';
-import TextFiled from '@components/TextFiled';
+import TextFiled from '@components/TextField';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -8,6 +8,16 @@ import Select from '@components/Select';
 
 const schema = yup.object().shape({
     first_name: yup.string().required('First name is required.'),
+    last_name: yup.string().required('Last name is required.'),
+    ssn_number: yup.string().required('SSN number is required.'),
+    dob: yup.string().required('Date of birth is required.'),
+    marital_status: yup.string().required('Marital status is required.'),
+    primary_phone: yup.string().required('Primary phone number is required.'),
+    secondary_phone: yup.string().required('Secondary phone number is required.'),
+    home_phone: yup.string().required('Home phone number is required.'),
+    work_phone: yup.string().required('Work phone number is required.'),
+    email: yup.string().required('Email address is required.'),
+    language: yup.string().required('Language is required.'),
 });
 
 const AddPatient = () => {
@@ -18,7 +28,6 @@ const AddPatient = () => {
     } = useForm({
         resolver: yupResolver(schema),
     });
-
 
     const onSubmit = (data) => {
         console.log(data);
@@ -56,15 +65,33 @@ const AddPatient = () => {
                             </div>
                             <div className="col-span-1 md:col-span-6 lg:col-span-4">
                                 <Typography variant="body2">Last Name</Typography>
-                                <TextFiled placeholder="Last Name" size="small" {...register('last_name')} />
+                                <TextFiled
+                                    placeholder="Last Name"
+                                    size="small"
+                                    {...register('last_name')}
+                                    error={Boolean(errors?.last_name)}
+                                    errorText={Boolean(errors.last_name) && errors.last_name.message}
+                                />
                             </div>
                             <div className="col-span-1 md:col-span-6 lg:col-span-4">
                                 <Typography variant="body2">Middle Name</Typography>
-                                <TextFiled placeholder="Middle Name" size="small" {...register('middle_name')} />
+                                <TextFiled
+                                    placeholder="Middle Name"
+                                    size="small"
+                                    {...register('middle_name')}
+                                    error={Boolean(errors?.middle_name)}
+                                    errorText={Boolean(errors.middle_name) && errors.middle_name.message}
+                                />
                             </div>
                             <div className="col-span-1 md:col-span-3 lg:col-span-6">
                                 <Typography variant="body2">Gender</Typography>
-                                <Select size="small" {...register('gender')} defaultValue="Male">
+                                <Select
+                                    size="small"
+                                    {...register('gender')}
+                                    defaultValue="Male"
+                                    error={Boolean(errors?.gender)}
+                                    errorText={Boolean(errors.gender) && errors.gender.message}
+                                >
                                     <option className="text-sm">Male</option>
                                     <option className="text-sm">Female</option>
                                     <option className="text-sm">Other</option>
@@ -72,11 +99,23 @@ const AddPatient = () => {
                             </div>
                             <div className="col-span-1 md:col-span-3 lg:col-span-6">
                                 <Typography variant="body2">SSN Number</Typography>
-                                <TextFiled size="small" placeholder="SSN Number" {...register('ssn_number')} />
+                                <TextFiled
+                                    size="small"
+                                    placeholder="SSN Number"
+                                    {...register('ssn_number')}
+                                    error={Boolean(errors?.ssn_number)}
+                                    errorText={Boolean(errors.ssn_number) && errors.ssn_number.message}
+                                />
                             </div>
                             <div className="col-span-1 md:col-span-3 lg:col-span-6">
                                 <Typography variant="body2">Date Of Birth</Typography>
-                                <TextFiled placeholder="Date Of Birth" size="small" {...register('date_of_birth')} />
+                                <TextFiled
+                                    placeholder="Date Of Birth"
+                                    size="small"
+                                    {...register('dob')}
+                                    error={Boolean(errors?.dob)}
+                                    errorText={Boolean(errors.dob) && errors.dob.message}
+                                />
                             </div>
                             <div className="col-span-1 md:col-span-3 lg:col-span-6">
                                 <Typography variant="body2">Marital Status</Typography>

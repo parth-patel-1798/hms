@@ -1,6 +1,6 @@
 import Select from '@components/Select';
 import Typography from '@components/Typography';
-import TextFiled from '@components/TextFiled';
+import TextFiled from '@components/TextField';
 import React from 'react';
 
 const AddEditForm = () => {

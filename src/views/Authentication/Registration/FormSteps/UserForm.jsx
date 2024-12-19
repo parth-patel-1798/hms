@@ -1,6 +1,6 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import TextFiled from '@components/TextFiled';
+import TextFiled from '@components/TextField';
 
 const UserForm = ({ control, errors }) => {
     return (

@@ -1,4 +1,4 @@
-import { CalendarRange, LayoutDashboard, Settings, Stethoscope, Users } from 'lucide-react';
+import { CalendarRange, FlaskConical, LayoutDashboard, Settings, Stethoscope, Users } from 'lucide-react';
 
 const strokeWidth = 1.5;
 
@@ -20,6 +20,11 @@ const MenuItems = {
             icon: <Stethoscope strokeWidth={strokeWidth} />,
         },
         {
+            title: 'Laboratories',
+            link: 'laboratory',
+            icon: <FlaskConical  strokeWidth={strokeWidth} />,
+        },
+        {
             title: 'Settings',
             icon: <Settings strokeWidth={strokeWidth} />,
             child: [
@@ -31,6 +36,10 @@ const MenuItems = {
                 //     title: 'Role',
                 //     link: 'settings/roles',
                 // },
+                {
+                    title: 'Packages',
+                    link: 'settings/packages',
+                },
             ],
         },
     ],

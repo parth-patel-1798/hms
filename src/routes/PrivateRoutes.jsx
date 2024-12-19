@@ -22,9 +22,15 @@ const EditPatient = Loadable(lazy(() => import('@views/Patient/EditPatient')));
 
 const RolePage = Loadable(lazy(() => import('@views/Settings/RolePermission/Roles')));
 
+// Laboratories
+const LaboratoryPage = Loadable(lazy(() => import('@views/Laboratory')));
+const LabAddPage = Loadable(lazy(() => import('@views/Laboratory/AddLab')));
+
 // MasterSettings
 const HospitalsPage = Loadable(lazy(() => import('@views/Settings/MasterSettings/Hospitals')));
 const DevicePage = Loadable(lazy(() => import('@views/Settings/MasterSettings/Device')));
+
+const PackagePage = Loadable(lazy(() => import('@views/Settings/Packages')));
 
 const checkPermission = () => {
     const hasPermission = true;
@@ -113,8 +119,36 @@ const PrivateRoutes = {
             errorElement: <ErrorBoundary />,
         },
         {
-            path: 'lab-test',
-            element: <div>Lab Tests</div>,
+            path: 'laboratory',
+            children: [
+                {
+                    path: '',
+                    element: <LaboratoryPage />,
+                    loader: () => {
+                        checkPermission();
+                        return true;
+                    },
+                    errorElement: <ErrorBoundary />,
+                },
+                {
+                    path: 'create',
+                    element: <LabAddPage />,
+                    loader: () => {
+                        checkPermission();
+                        return true;
+                    },
+                    errorElement: <ErrorBoundary />,
+                },
+                {
+                    path: ':labID/edit',
+                    element: <div>Edit Lab</div>,
+                    loader: () => {
+                        checkPermission();
+                        return true;
+                    },
+                    errorElement: <ErrorBoundary />,
+                },
+            ],
         },
         {
             path: 'settings/master',
@@ -166,6 +200,23 @@ const PrivateRoutes = {
                         return true;
                     },
                     errorElement: <ErrorBoundary />,
+                },
+            ],
+        },
+        {
+            path: 'settings/packages',
+            children: [
+                {
+                    path: '',
+                    element: <PackagePage />,
+                },
+                {
+                    path: 'create',
+                    element: <div>Create Packages</div>,
+                },
+                {
+                    path: 'edit/:id',
+                    element: <div>Edit Packages</div>,
                 },
             ],
         },
