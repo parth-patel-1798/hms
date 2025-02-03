@@ -8,6 +8,7 @@ import DoctorData from './DoctorData.json';
 import { GrEdit } from 'react-icons/gr';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { LuMail, LuPhone } from 'react-icons/lu';
+import { MdOutlineInfo } from 'react-icons/md';
 
 const Doctors = () => {
     return (

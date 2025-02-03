@@ -12,13 +12,13 @@ import AddDoctor from '@views/Doctors/AddDoctor';
 import Loadable from '@utils/Loadable';
 import ErrorBoundary from './ErrorBoundary';
 import AddRole from '@views/Settings/RolePermission/Roles/AddRole';
-
 const Dashboard = Loadable(lazy(() => import('@views/Dashboard')));
 
 // Patients
 const Patient = Loadable(lazy(() => import('@views/Patient')));
 const AddPatient = Loadable(lazy(() => import('@views/Patient/AddPatient')));
 const EditPatient = Loadable(lazy(() => import('@views/Patient/EditPatient')));
+const PatientDetails = Loadable(lazy(() => import('@views/Patient/PatientDetails')));
 
 const RolePage = Loadable(lazy(() => import('@views/Settings/RolePermission/Roles')));
 
@@ -112,6 +112,15 @@ const PrivateRoutes = {
         {
             path: 'patients/edit/:id',
             element: <EditPatient />,
+            loader: () => {
+                checkPermission();
+                return true;
+            },
+            errorElement: <ErrorBoundary />,
+        },
+        {
+            path: 'patients/details/:id',
+            element: <PatientDetails />,
             loader: () => {
                 checkPermission();
                 return true;

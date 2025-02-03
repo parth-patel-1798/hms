@@ -10,6 +10,7 @@ import Avatar1 from '@assets/images/avatars/avatar1.jpg';
 import PatientData from './PatientData.json';
 import PatientFilter from './PatientFilter';
 import Model from '@components/Model';
+import { MdOutlineInfo } from 'react-icons/md';
 
 const Patient = () => {
     const navigation = useNavigate();
@@ -69,6 +70,7 @@ const Patient = () => {
                                         key={patient.id}
                                         patient={patient}
                                         handleEdit={() => navigation(`edit/${patient.id}`)}
+                                        handleDetails={() => navigation(`details/${patient.id}`)}
                                     />
                                 ))}
                             </tbody>
@@ -86,7 +88,7 @@ const Patient = () => {
 
 export default Patient;
 
-const PatientRow = React.memo(({ patient, handleEdit }) => {
+const PatientRow = React.memo(({ patient, handleEdit, handleDetails }) => {
     return (
         <tr className="bg-white hover:bg-gray-100 rounded-md items-center">
             <td className="p-2 flex gap-2">
@@ -107,7 +109,10 @@ const PatientRow = React.memo(({ patient, handleEdit }) => {
             </td>
             <td className="p-2 text-xs font-normal truncate">{patient.address}</td>
             <td className="p-2 float-right flex gap-2">
-                <button className="text-slate-900 cursor-pointer" onClick={() => handleEdit(patient.id)}>
+                <button className="text-sky-900 cursor-pointer text-lg" onClick={() => handleDetails()}>
+                    <MdOutlineInfo />
+                </button>
+                <button className="text-slate-900 cursor-pointer" onClick={() => handleEdit()}>
                     <GrEdit />
                 </button>
                 <button className="text-red-800 cursor-pointer">
