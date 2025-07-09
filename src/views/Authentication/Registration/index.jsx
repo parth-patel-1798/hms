@@ -7,32 +7,43 @@ import UserForm from './FormSteps/UserForm';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { NavLink } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { ReportListAPI } from '@apis/Reports';
 
 const validationSchemas = [
     Yup.object().shape({ user_type: Yup.string().required('Please select any one user type.') }),
     Yup.object().shape({
+        first_name: Yup.string().required('First name is required.'),
+        last_name: Yup.string().required('Last name is required.'),
         email: Yup.string().email('Please enter valid email address.').required('Email is required.'),
+        country: Yup.string().required('Country is required.'),
+        state: Yup.string().required('State is required.'),
+        city: Yup.string().required('City is required.'),
+        zip_code: Yup.string().required('Zip code is required.'),
     }),
 ];
 
 const Registration = () => {
     const [currentStep, setCurrentStep] = useState(0);
 
-    const {
-        control,
-        handleSubmit,
-        formState: { errors },
-        getValues,
-        setValue,
-        trigger,
-    } = useForm({
+    const { control, handleSubmit, formState, trigger } = useForm({
         resolver: yupResolver(validationSchemas[currentStep]),
     });
+
+    const { data: reports } = useQuery({ queryKey: ['reports'], queryFn: ReportListAPI });
+    const steps = [
+        { title: 'User Selection', element: <UserSelection control={control} errors={formState.errors} /> },
+        {
+            title: 'Registration Form',
+            element: <UserForm control={control} errors={formState.errors} reports={reports} />,
+        },
+    ];
 
     const onSubmit = (data) => {
         console.log(data);
     };
 
+    // Pagination
     const nextStep = async (e) => {
         const isValid = await trigger();
         if (isValid) {
@@ -44,13 +55,10 @@ const Registration = () => {
         setCurrentStep(currentStep - 1);
     };
 
-    const steps = [
-        { title: 'User Selection', element: <UserSelection control={control} errors={errors} /> },
-        { title: 'Registration Form', element: <UserForm control={control} errors={errors} /> },
-    ];
     const lastStep = steps.length - 1;
+
     return (
-        <form className="flex flex-col gap-10 ">
+        <form className="flex flex-col gap-10">
             {/* <p className="text-center">Registration</p> */}
             <div className="grid gap-5">
                 <p className="text-center">{steps[currentStep].title}</p>

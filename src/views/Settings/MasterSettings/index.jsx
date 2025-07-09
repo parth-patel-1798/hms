@@ -21,7 +21,7 @@ const MasterSettings = () => {
 
             {/* Main Content */}
             <div className="flex-1 flex gap-2 w-full">
-                <div className={`${isMasterRoute ? 'block w-full' : 'hidden lg:block'} lg:w-[240px]`}>
+                <div className={`${isMasterRoute ? 'block w-full' : 'hidden lg:block'} lg:w-[240px] sticky top-0`}>
                     <div className="bg-white rounded-md px-2">
                         <div className="grid grid-cols-1 gap-2 p-2 bg-white rounded-md">
                             {MasterMenus.map((menu, i) => {
@@ -34,7 +34,7 @@ const MasterSettings = () => {
                                             `py-1 inline-flex items-center gap-2 ${isActive ? 'text-cyan-800 font-semibold' : 'hover:text-cyan-800 hover:font-normal'}`
                                         }
                                     >
-                                        <Icon className="text-2xl" strokeWidth={1.5}/>
+                                        <Icon className="text-2xl" strokeWidth={1.5} />
                                         <Typography variant="body2" className="truncate">
                                             {menu.title}
                                         </Typography>

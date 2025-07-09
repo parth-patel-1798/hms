@@ -33,6 +33,13 @@ const Login = () => {
         onSuccess: (response) => {
             reset();
             const { data } = response;
+            const permissions = data.data.permissions;
+            const ExtractPermissions = Object.keys(permissions)
+                .map((key) => {
+                    return Object.keys(permissions[key]);
+                })
+                .flat();
+            data.data.permissions = ExtractPermissions;
             dispatch(login({ user: data.data, token: data.accessToken }));
             toast.success(data.message);
         },

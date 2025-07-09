@@ -12,7 +12,13 @@ import AddDoctor from '@views/Doctors/AddDoctor';
 import Loadable from '@utils/Loadable';
 import ErrorBoundary from './ErrorBoundary';
 import AddRole from '@views/Settings/RolePermission/Roles/AddRole';
+import { checkPermission } from '@utils/classUtils';
+import AddEditDoctor from '@views/Doctors/AddEditDoctor';
+
 const Dashboard = Loadable(lazy(() => import('@views/Dashboard')));
+
+// Appointments
+const Appointment = Loadable(lazy(() => import('@views/Appointment')));
 
 // Patients
 const Patient = Loadable(lazy(() => import('@views/Patient')));
@@ -32,12 +38,13 @@ const DevicePage = Loadable(lazy(() => import('@views/Settings/MasterSettings/De
 
 const PackagePage = Loadable(lazy(() => import('@views/Settings/Packages')));
 
-const checkPermission = () => {
-    const hasPermission = true;
-    if (!hasPermission) {
+const hasPermission = (permission = null) => {
+    const permissions = checkPermission(permission);
+    if (permissions) {
+        return true;
+    } else {
         throw new Error('Forbidden');
     }
-    return true;
 };
 
 const PrivateRoutes = {
@@ -52,22 +59,11 @@ const PrivateRoutes = {
         {
             path: 'dashboard',
             element: <Dashboard />,
-            loader: () => {
-                checkPermission();
-                return true;
-            },
             errorElement: <ErrorBoundary />,
         },
         { path: 'calender', element: <div>Calender</div> },
-        {
-            path: 'patients',
-            element: <Patient />,
-            loader: () => {
-                checkPermission();
-                return true;
-            },
-            errorElement: <ErrorBoundary />,
-        },
+        { path: 'appointments', element: <Appointment /> },
+
         {
             path: 'doctors',
             children: [
@@ -75,25 +71,25 @@ const PrivateRoutes = {
                     path: '',
                     element: <Doctors />,
                     loader: () => {
-                        checkPermission();
+                        hasPermission('doctor-list');
                         return true;
                     },
                     errorElement: <ErrorBoundary />,
                 },
                 {
                     path: 'create',
-                    element: <AddDoctor />,
+                    element: <AddEditDoctor />,
                     loader: () => {
-                        checkPermission();
+                        hasPermission('doctor-create');
                         return true;
                     },
                     errorElement: <ErrorBoundary />,
                 },
                 {
                     path: 'edit/:id',
-                    element: <EditDoctor />,
+                    element: <AddEditDoctor />,
                     loader: () => {
-                        checkPermission();
+                        hasPermission('doctor-edit');
                         return true;
                     },
                     errorElement: <ErrorBoundary />,
@@ -101,32 +97,47 @@ const PrivateRoutes = {
             ],
         },
         {
-            path: 'patients/create',
-            element: <AddPatient />,
-            loader: () => {
-                checkPermission();
-                return true;
-            },
-            errorElement: <ErrorBoundary />,
+            path: 'patients',
+            children: [
+                {
+                    path: '',
+                    element: <Patient />,
+                    loader: () => {
+                        hasPermission('patient-list');
+                        return true;
+                    },
+                    errorElement: <ErrorBoundary />,
+                },
+                {
+                    path: 'create',
+                    element: <AddPatient />,
+                    loader: () => {
+                        hasPermission('patient-create');
+                        return true;
+                    },
+                    errorElement: <ErrorBoundary />,
+                },
+                {
+                    path: 'edit/:id',
+                    element: <AddPatient />,
+                    loader: () => {
+                        hasPermission('patient-edit');
+                        return true;
+                    },
+                    errorElement: <ErrorBoundary />,
+                },
+                {
+                    path: 'details/:id',
+                    element: <PatientDetails />,
+                    loader: () => {
+                        hasPermission();
+                        return true;
+                    },
+                    errorElement: <ErrorBoundary />,
+                },
+            ],
         },
-        {
-            path: 'patients/edit/:id',
-            element: <EditPatient />,
-            loader: () => {
-                checkPermission();
-                return true;
-            },
-            errorElement: <ErrorBoundary />,
-        },
-        {
-            path: 'patients/details/:id',
-            element: <PatientDetails />,
-            loader: () => {
-                checkPermission();
-                return true;
-            },
-            errorElement: <ErrorBoundary />,
-        },
+
         {
             path: 'laboratory',
             children: [
@@ -134,7 +145,7 @@ const PrivateRoutes = {
                     path: '',
                     element: <LaboratoryPage />,
                     loader: () => {
-                        checkPermission();
+                        hasPermission();
                         return true;
                     },
                     errorElement: <ErrorBoundary />,
@@ -143,7 +154,7 @@ const PrivateRoutes = {
                     path: 'create',
                     element: <LabAddPage />,
                     loader: () => {
-                        checkPermission();
+                        hasPermission();
                         return true;
                     },
                     errorElement: <ErrorBoundary />,
@@ -152,7 +163,7 @@ const PrivateRoutes = {
                     path: ':labID/edit',
                     element: <div>Edit Lab</div>,
                     loader: () => {
-                        checkPermission();
+                        hasPermission();
                         return true;
                     },
                     errorElement: <ErrorBoundary />,
@@ -196,7 +207,7 @@ const PrivateRoutes = {
                     path: '',
                     element: <RolePage />,
                     loader: () => {
-                        checkPermission();
+                        hasPermission('role-list');
                         return true;
                     },
                     errorElement: <ErrorBoundary />,
@@ -205,7 +216,16 @@ const PrivateRoutes = {
                     path: 'create',
                     element: <AddRole />,
                     loader: () => {
-                        checkPermission();
+                        hasPermission('role-create');
+                        return true;
+                    },
+                    errorElement: <ErrorBoundary />,
+                },
+                {
+                    path: ':id/edit',
+                    element: <AddRole />,
+                    loader: () => {
+                        hasPermission('role-edit');
                         return true;
                     },
                     errorElement: <ErrorBoundary />,
