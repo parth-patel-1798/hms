@@ -9,3 +9,8 @@ export const RolePermissionsURL = '/permission/list';
 
 // Hospital
 export const HospitalURL = '/hospital';
+export const DoctorURL = '/doctor';
+export const DoctorSpecializationURL = '/doctor/specialization';
+
+// Report
+export const ReportURL = '/report';
