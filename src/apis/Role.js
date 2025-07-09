@@ -1,5 +1,6 @@
 import { RoleListURL, RolePermissionsURL, RoleURL } from '@utils/ApiConstant';
 import { AxiosServices } from '@utils/AxiosService';
+import toast from 'react-hot-toast';
 
 /**
  * Fetches the list of roles from the API.
@@ -51,7 +52,9 @@ export async function RoleAddUpdateAPI(data) {
         if (response?.status === 200 && response?.data) {
             return response.data;
         } else {
-            throw new Error('Unexpected API response');
+            const { data } = error.response;
+            toast.error(data.message);
+            throw new Error(data.message || 'Failed to Role API. Please try again later.');
         }
     } catch (error) {
         console.error(`Error fetching roles: ${error.message || error}`);

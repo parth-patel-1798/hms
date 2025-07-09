@@ -16,7 +16,7 @@ const Sidebar = () => {
     const { isMobile } = useScreenSize();
 
     const [activeSubmenu, setActiveSubmenu] = useState(null);
-    const Menus = MenuItems[LoginUser.user_type];
+    const Menus = MenuItems;
 
     const toggleSubmenu = (i) => {
         if (activeSubmenu === i) {
