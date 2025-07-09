@@ -11,6 +11,10 @@
     ::-webkit-scrollbar {
         // scrollbar-width: none; /* Hide scrollbar for WebKit browsers */
     }
+
+    .parent:has(.remove-parent-padding) {
+        padding: 0; /* This removes the parent's padding when the child exists */
+    }
 }
 
 @layer components {

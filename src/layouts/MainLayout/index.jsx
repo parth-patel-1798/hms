@@ -36,8 +36,8 @@ const MainLayout = () => {
                     <Header />
 
                     {/* Main Content Section with SimpleBar for scroll management */}
-                    <main className="flex-1 flex flex-col bg-slate-100 overflow-auto">
-                        <div className="flex-1 p-2">
+                    <main className="flex-1 flex flex-col bg-slate-100 p-2 overflow-auto">
+                        <div className="flex-1 p-2 parent">
                             <Outlet />
                         </div>
                     </main>
