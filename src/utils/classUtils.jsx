@@ -1,6 +1,7 @@
 // utils/classUtils.js
 import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
+import { store } from '@store/index';
 
 /**
  * Combines Tailwind CSS classes with conditional logic and merges them.
@@ -18,4 +19,21 @@ export function mergeClasses(baseClasses, additionalClasses) {
 
     // Use twMerge to handle Tailwind conflicts and merge classes
     return twMerge(combinedClasses);
+}
+
+/**
+ * Checks if the user has the required permission.
+ *
+ * @param {string | null} permission - The specific permission to check. If null, only "full-access" is checked.
+ * @returns {boolean} - Returns true if the user has the required permission or "full-access".
+ * @throws {Error} - Throws an error if the user does not have the required permission.
+ */
+export function checkPermission(permission) {
+    const { user } = store.getState().auth;
+    const permissions = user.permissions;
+
+    if (permissions.includes('full-access') || permissions.includes(permission)) {
+        return true;
+    }
+    return false;
 }
