@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 
 export default defineConfig({
-    base: '/hms/',
+    base: '/',
     resolve: {
         alias: {
             '@apis': path.resolve(__dirname, 'src/apis'),

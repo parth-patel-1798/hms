@@ -7,14 +7,19 @@ import { FiFilter, FiPlusCircle } from 'react-icons/fi';
 
 import Pagination from '@components/Pagination';
 import Avatar1 from '@assets/images/avatars/avatar1.jpg';
-import PatientData from './PatientData.json';
 import PatientFilter from './PatientFilter';
 import Model from '@components/Model';
 import { MdOutlineInfo } from 'react-icons/md';
+import { useQuery } from '@tanstack/react-query';
+import { PatientListAPI } from '@apis/Patient';
 
 const Patient = () => {
     const navigation = useNavigate();
     const [openFilter, setOpenFilter] = useState(false);
+
+    const { data } = useQuery({ queryKey: ['patient_list'], queryFn: PatientListAPI });
+    const PatientList = data?.data || [];
+
     return (
         <React.Fragment>
             <div className="flex flex-col gap-2">
@@ -58,19 +63,20 @@ const Patient = () => {
                             <thead className="text-sm font-normal w-full bg-gray-200">
                                 <tr className="text-left">
                                     <th className="p-2 font-semibold">Name</th>
-                                    <th className="p-2 font-semibold">Age</th>
+                                    <th className="p-2 font-semibold">Gender</th>
+                                    <th className="p-2 font-semibold">Date of Birth</th>
                                     <th className="p-2 font-semibold">Contact Info</th>
                                     <th className="p-2 font-semibold">Address</th>
                                     <th className="p-2 font-semibold text-right">Action</th>
                                 </tr>
                             </thead>
                             <tbody className="border-b">
-                                {PatientData.map((patient) => (
+                                {PatientList.map((patient) => (
                                     <PatientRow
-                                        key={patient.id}
+                                        key={patient.uuid}
                                         patient={patient}
-                                        handleEdit={() => navigation(`edit/${patient.id}`)}
-                                        handleDetails={() => navigation(`details/${patient.id}`)}
+                                        handleEdit={() => navigation(`edit/${patient.uuid}`)}
+                                        handleDetails={() => navigation(`details/${patient.uuid}`)}
                                     />
                                 ))}
                             </tbody>
@@ -89,25 +95,56 @@ const Patient = () => {
 export default Patient;
 
 const PatientRow = React.memo(({ patient, handleEdit, handleDetails }) => {
+    const calculateAge = (dob) => {
+        const birthDate = new Date(dob);
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDiff = today.getMonth() - birthDate.getMonth();
+        const dayDiff = today.getDate() - birthDate.getDate();
+
+        if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+            age--;
+        }
+
+        return age;
+    };
     return (
-        <tr className="bg-white hover:bg-gray-100 rounded-md items-center">
+        <tr className="bg-white hover:bg-gray-100 rounded-md items-center ">
             <td className="p-2 flex gap-2">
-                <img src={Avatar1} className="h-10 rounded-full" alt="Avatar" />
+                <img
+                    src={patient.user.profile_image || Avatar1}
+                    onError={(e) => {
+                        e.target.onerror = null; // Prevent infinite loop
+                        e.target.src = Avatar1;
+                    }}
+                    className="h-10 rounded-full"
+                    alt="Avatar"
+                />
                 <div className="truncate">
-                    <span className="text-sm font-semibold text-slate-900">{patient.name}</span>
-                    <small className="block text-xs text-gray-600">{patient.id}</small>
+                    <span className="text-sm font-semibold text-slate-900">{patient.user.name}</span>
+                    <small className="block text-xs text-gray-600">{patient.arn_number}</small>
                 </div>
             </td>
-            <td className="p-2">{patient.age}</td>
+            <td className="p-2">{patient.gender}</td>
+            <td className="p-2">
+                <span className="text-sm font-medium text-slate-900">{patient.dob}</span>
+                <small className="block text-xs text-gray-600">
+                    Age: <span className="font-semibold">{calculateAge(patient?.dob)}</span>
+                </small>
+            </td>
             <td className="p-2 text-xs font-normal truncate">
                 <span className="inline-flex gap-1 items-center">
-                    <LuMail /> {patient.email}
+                    <LuMail /> {patient.user.email}
                 </span>
                 <span className="flex gap-1 items-center">
-                    <LuPhone /> {patient.phone}
+                    <LuPhone /> {patient.primary_phone}
                 </span>
             </td>
-            <td className="p-2 text-xs font-normal truncate">{patient.address}</td>
+            <td className="p-2 text-xs font-normal text-nowrap">
+                {patient.address_line_1} <br />
+                {patient.address_line_2} <br />
+                {patient.country}, {patient.city} - {patient.postal_code}
+            </td>
             <td className="p-2 float-right flex gap-2">
                 <button className="text-sky-900 cursor-pointer text-lg" onClick={() => handleDetails()}>
                     <MdOutlineInfo />
